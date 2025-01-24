@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhbve28s5tl6q"]
+[gd_scene load_steps=3 format=3 uid="uid://bhbve28s5tl6q"]
 
-[ext_resource type="Theme" uid="uid://xmw5s6ytlo3k" path="res://assets/fonts/basetext.tres" id="1_l26f4"]
+[ext_resource type="Theme" uid="uid://xmw5s6ytlo3k" path="res://assets/fonts/basetext.tres" id="1_2mm8i"]
+[ext_resource type="Script" path="res://scripts/quitbutton.gd" id="2_2elgg"]
 
 [node name="main menu" type="Control"]
 layout_mode = 3
@@ -23,7 +24,7 @@ offset_right = 100.0
 offset_bottom = 106.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_l26f4")
+theme = ExtResource("1_2mm8i")
 theme_override_font_sizes/font_size = 20
 text = "Play"
 
@@ -40,6 +41,7 @@ offset_right = 100.0
 offset_bottom = 207.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_l26f4")
+theme = ExtResource("1_2mm8i")
 theme_override_font_sizes/font_size = 20
 text = "Quit"
+script = ExtResource("2_2elgg")
