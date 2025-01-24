@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://df6n5fnrrtxh8"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_if1o6"]
+[ext_resource type="Script" path="res://scenes/objects/player_controller.gd" id="2_iald7"]
+[ext_resource type="Script" path="res://scenes/objects/player_grounded_state_machine.gd" id="3_4ff53"]
+[ext_resource type="Script" path="res://scripts/state_machine.gd" id="4_3jhbh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ydc2k"]
+radius = 39.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_if1o6")
+
+[node name="Controller" type="Node" parent="."]
+script = ExtResource("2_iald7")
+
+[node name="GroundedStateMachine" type="Node" parent="Controller"]
+script = ExtResource("3_4ff53")
+
+[node name="Idle" type="Node" parent="Controller/GroundedStateMachine"]
+
+[node name="Walk" type="Node" parent="Controller/GroundedStateMachine"]
+
+[node name="Run" type="Node" parent="Controller/GroundedStateMachine"]
+
+[node name="Jump" type="Node" parent="Controller/GroundedStateMachine"]
+
+[node name="UnderwaterStateMachine" type="Node" parent="Controller"]
+
+[node name="Idle" type="Node" parent="Controller/UnderwaterStateMachine"]
+
+[node name="Walk" type="Node" parent="Controller/UnderwaterStateMachine"]
+
+[node name="Swim" type="Node" parent="Controller/UnderwaterStateMachine"]
+
+[node name="Jump" type="Node" parent="Controller/UnderwaterStateMachine"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ydc2k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("4_3jhbh")
