@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://q5e8hcdsoyt8"]
+
+[ext_resource type="PackedScene" uid="uid://df6n5fnrrtxh8" path="res://scenes/objects/player.tscn" id="1_nrdmv"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_udl0n"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_u0yi2"]
+
+[node name="PlayerTestScene" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_nrdmv")]
+position = Vector2(0, -48)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+shape = SubResource("WorldBoundaryShape2D_udl0n")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+position = Vector2(0, 5)
+scale = Vector2(1152, 10)
+texture = SubResource("PlaceholderTexture2D_u0yi2")
