@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmqbyvfy0nnwb"]
+
+[ext_resource type="Texture2D" uid="uid://b4wivdan60b3l" path="res://assets/sprites/backgrounds/OceanFloorRear.png" id="1_revos"]
+[ext_resource type="Texture2D" uid="uid://bfws0r5mvw126" path="res://assets/sprites/backgrounds/OceanFloorFront.png" id="2_wjmti"]
+
+[node name="Ocean Floor" type="Node2D" groups=["Zones"]]
+position = Vector2(-1915, -1081)
+scale = Vector2(0.5, 0.5)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+follow_viewport_enabled = true
+follow_viewport_scale = 720.576
+scroll_base_scale = Vector2(0.5, 0)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.3, 0)
+motion_offset = Vector2(0, 30)
+
+[node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+z_index = -20
+position = Vector2(4, -546)
+texture = ExtResource("1_revos")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(948, 0)
+motion_scale = Vector2(0.5, 0)
+motion_offset = Vector2(0, 20)
+
+[node name="foreground" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(14, -546)
+texture = ExtResource("2_wjmti")
