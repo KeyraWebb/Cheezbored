@@ -11,7 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4e82b")
-deplete_delay = 5
+deplete_delay = 100
 oxygen_display = NodePath("OxygenDisplay")
 low_oxygen_color = Color(1, 0.29, 0.29, 1)
 
