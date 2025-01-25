@@ -8,6 +8,8 @@ var visibletarget
 var currentdelay = 0
 var rng = RandomNumberGenerator.new()
 
+var killplayer : Signal
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	currentdelay = rng.randi_range(movedelaymin,movedelaymax)
@@ -46,3 +48,8 @@ func _on_sight_area_entered(area: Area2D) -> void:
 func _on_sight_area_exited(area: Area2D) -> void:
 	if area.get_parent() == player:
 		visibletarget = null
+
+
+func _on_killzone_area_entered(area: Area2D) -> void:
+	if area.get_parent() == player:
+		killplayer.emit()

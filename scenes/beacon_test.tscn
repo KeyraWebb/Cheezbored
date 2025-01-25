@@ -1,38 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://da5yt61ghl5ak"]
+[gd_scene load_steps=8 format=3 uid="uid://da5yt61ghl5ak"]
 
 [ext_resource type="PackedScene" uid="uid://df6n5fnrrtxh8" path="res://scenes/objects/player.tscn" id="1_fd84c"]
 [ext_resource type="Script" path="res://scripts/beacon_area.gd" id="2_layvb"]
 [ext_resource type="Texture2D" uid="uid://cgd2ekpq1u484" path="res://icon.svg" id="2_r61nq"]
 [ext_resource type="PackedScene" uid="uid://dcnsaytirumkn" path="res://scenes/ui/tooltip.tscn" id="4_ultpx"]
 [ext_resource type="PackedScene" uid="uid://cs1exj1uj3x2t" path="res://scenes/objects/huge_man.tscn" id="5_vgrs3"]
-[ext_resource type="Script" path="res://shark.gd" id="6_su8v7"]
+[ext_resource type="PackedScene" uid="uid://b20e8kh6v6fc0" path="res://scenes/objects/shark.tscn" id="6_jr3ct"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hcre"]
 size = Vector2(99.5, 129)
-
-[sub_resource type="GDScript" id="GDScript_7oxfd"]
-script/source = "extends Area2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_oum8q"]
-radius = 381.525
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ewvbl"]
-radius = 73.7631
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mehqs"]
-radius = 48.0
-height = 194.0
 
 [node name="BeaconTest" type="Node2D"]
 
@@ -64,35 +40,7 @@ offset_bottom = -18.0
 [node name="HugeMan" parent="." instance=ExtResource("5_vgrs3")]
 visible = false
 
-[node name="shark" type="CharacterBody2D" parent="." node_paths=PackedStringArray("player")]
-position = Vector2(368, -416)
-script = ExtResource("6_su8v7")
-movespeed = 500
-player = NodePath("../Player")
-
-[node name="sight" type="Area2D" parent="shark"]
-collision_layer = 2
-collision_mask = 2
-script = SubResource("GDScript_7oxfd")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="shark/sight"]
-shape = SubResource("CircleShape2D_oum8q")
-
-[node name="Shark" type="Sprite2D" parent="shark"]
-texture = ExtResource("2_r61nq")
-
-[node name="killzone" type="Area2D" parent="shark"]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="shark/killzone"]
-shape = SubResource("CircleShape2D_ewvbl")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="shark"]
-rotation = 1.55535
-shape = SubResource("CapsuleShape2D_mehqs")
+[node name="shark" parent="." instance=ExtResource("6_jr3ct")]
 
 [connection signal="area_entered" from="BeaconArea" to="BeaconArea" method="_on_area_entered"]
 [connection signal="area_exited" from="BeaconArea" to="BeaconArea" method="_on_area_exited"]
-[connection signal="area_entered" from="shark/sight" to="shark" method="_on_sight_area_entered"]
-[connection signal="area_exited" from="shark/sight" to="shark" method="_on_sight_area_exited"]
