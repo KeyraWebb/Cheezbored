@@ -1,12 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://da5yt61ghl5ak"]
+[gd_scene load_steps=12 format=3 uid="uid://b2ipms3d14nx"]
+
 
 [ext_resource type="PackedScene" uid="uid://df6n5fnrrtxh8" path="res://scenes/objects/player.tscn" id="1_fd84c"]
 [ext_resource type="Script" path="res://scripts/beacon_area.gd" id="2_layvb"]
 [ext_resource type="Texture2D" uid="uid://cgd2ekpq1u484" path="res://icon.svg" id="2_r61nq"]
-[ext_resource type="PackedScene" uid="uid://dcnsaytirumkn" path="res://scenes/ui/tooltip.tscn" id="4_ultpx"]
+[ext_resource type="PackedScene" path="res://scenes/ui/tooltip.tscn" id="4_ultpx"]
 [ext_resource type="PackedScene" uid="uid://cs1exj1uj3x2t" path="res://scenes/objects/huge_man.tscn" id="5_vgrs3"]
 [ext_resource type="PackedScene" uid="uid://b20e8kh6v6fc0" path="res://scenes/objects/shark.tscn" id="6_jr3ct"]
 [ext_resource type="PackedScene" uid="uid://cvux58ossusty" path="res://scenes/ui/oxygen_timer.tscn" id="7_l6yig"]
+[ext_resource type="PackedScene" uid="uid://c0mvjyg3yfh7t" path="res://scenes/objects/jellyfish.tscn" id="8_iv8lr"]
+[ext_resource type="PackedScene" uid="uid://b7y5ytxibpi5e" path="res://scenes/objects/seaweed.tscn" id="9_emq42"]
+[ext_resource type="PackedScene" uid="uid://8amkkokbu6c8" path="res://scenes/objects/tuna_fish.tscn" id="10_usbi5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hcre"]
 size = Vector2(99.5, 129)
@@ -52,6 +56,14 @@ visible = false
 
 [node name="shark" parent="." instance=ExtResource("6_jr3ct")]
 position = Vector2(1456, 520)
+
+
+[node name="jellyfish" parent="." instance=ExtResource("8_iv8lr")]
+
+[node name="seaweed" parent="." instance=ExtResource("9_emq42")]
+
+[node name="TunaFish" parent="." instance=ExtResource("10_usbi5")]
+
 
 [connection signal="area_entered" from="BeaconArea" to="BeaconArea" method="_on_area_entered"]
 [connection signal="area_exited" from="BeaconArea" to="BeaconArea" method="_on_area_exited"]
