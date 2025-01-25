@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfwd1jovxn5q3"]
+
+[ext_resource type="PackedScene" uid="uid://015qpi431l65" path="res://scenes/objects/oxygen_dispenser.tscn" id="1_wayvw"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tbnus"]
+size = Vector2(300, 200)
+
+[node name="Pipe" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(8.7598e-06, 0.987175, 0.559455, 1)
+position = Vector2(960, 9.09495e-13)
+scale = Vector2(6.4, 0.12)
+texture = SubResource("PlaceholderTexture2D_tbnus")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(8.7598e-06, 0.987175, 0.559455, 1)
+position = Vector2(-4.19617e-05, 1.00136e-05)
+scale = Vector2(0.0399996, 0.200001)
+texture = SubResource("PlaceholderTexture2D_tbnus")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 24.0
+offset_top = -8.0
+offset_right = 65.0
+offset_bottom = 15.0
+text = "PIPE"
+
+[node name="OxygenDispenser" parent="." instance=ExtResource("1_wayvw")]
+position = Vector2(1920, 0)
