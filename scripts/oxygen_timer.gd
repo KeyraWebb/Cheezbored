@@ -1,10 +1,12 @@
 extends Control
 
-var oxygen = 100
 @export var deplete_delay: int
-var deplete_timer = 0
 @export var oxygen_display: Label
 @export var low_oxygen_color: Color
+
+var oxygen = 100
+var deplete_timer = 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
