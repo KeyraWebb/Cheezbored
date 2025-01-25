@@ -8,7 +8,8 @@ signal on_beacon_placed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	tooltip.hide_tooltip()
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
