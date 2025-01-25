@@ -1,12 +1,11 @@
 extends Node
-
-const UNDERWATER_LEVEL_PRELOAD = preload("res://scenes/zone_loader_test.tscn")
+class_name Game
 
 @onready var main_menu: Control = $"main menu"
+@onready var underwater_level: Node2D = $UnderwaterLevel
 
-var underwater_level: Node2D
-var city_level: Node2D
-
+@onready var death_screen: Control = $DeathScreen
+@onready var respawn_timer: Timer = $DeathScreen/RespawnTimer
 
 var active_level: Node2D:
 	set(value):
@@ -20,9 +19,8 @@ var active_level: Node2D:
 
 
 func _ready() -> void:		
-	# open level scenes but make them inactive
-	underwater_level = UNDERWATER_LEVEL_PRELOAD.instantiate()
-
+	remove_child(underwater_level)
+	
 
 func _on_menu_play_pressed() -> void:
 	print("pressed play!")
@@ -38,3 +36,15 @@ func _input(event: InputEvent) -> void:
 		print("paused")
 		add_child(main_menu)
 		remove_child(active_level)
+
+
+func die() -> void:
+	remove_child(active_level)
+	death_screen.show()
+	respawn_timer.start()
+
+
+func _on_respawn_timer_timeout() -> void:
+	death_screen.hide()
+	active_level.restart()
+	add_child(active_level)

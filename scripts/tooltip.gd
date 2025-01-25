@@ -1,4 +1,5 @@
 extends Control
+class_name Tooltip
 
 @export var tooltiptext: Label
 
