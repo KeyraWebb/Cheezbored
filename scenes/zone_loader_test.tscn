@@ -1,11 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://crs5bfilcviv6"]
+[gd_scene load_steps=6 format=3 uid="uid://crs5bfilcviv6"]
 
 [ext_resource type="PackedScene" uid="uid://df6n5fnrrtxh8" path="res://scenes/objects/player.tscn" id="1_5dfng"]
 [ext_resource type="Texture2D" uid="uid://c5u8aug8o1qd0" path="res://assets/sprites/Setting Image temp.png" id="2_avkxb"]
 [ext_resource type="Script" path="res://scripts/zones.gd" id="2_usm80"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_008sg"]
-size = Vector2(2020, 1175)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_c0pn0"]
 
@@ -16,15 +13,7 @@ size = Vector2(2020, 1175)
 [node name="Player" parent="." instance=ExtResource("1_5dfng")]
 position = Vector2(0, -80)
 walk_speed = 900.0
-
-[node name="playertrigger" type="Area2D" parent="Player"]
-position = Vector2(-10, -6)
-collision_layer = 8
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/playertrigger"]
-position = Vector2(-7, -0.5)
-shape = SubResource("RectangleShape2D_008sg")
+swim_speed = 500.0
 
 [node name="Ground" type="StaticBody2D" parent="."]
 
@@ -82,6 +71,3 @@ scale = Vector2(0.5, 0.5)
 z_index = -20
 position = Vector2(1760, 0)
 texture = ExtResource("2_avkxb")
-
-[connection signal="area_entered" from="Player/playertrigger" to="Zones/Ocean Floor/Background" method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="Player/playertrigger" to="Zones/Ocean Floor/Background" method="_on_area_2d_area_exited"]
