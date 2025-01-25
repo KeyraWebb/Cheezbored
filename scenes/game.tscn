@@ -14,7 +14,9 @@ script = ExtResource("1_7wbg4")
 visible = false
 
 [node name="RespawnTimer" type="Timer" parent="DeathScreen"]
+one_shot = true
 
 [node name="UnderwaterLevel" parent="." instance=ExtResource("4_i1g5f")]
 
 [connection signal="on_play_pressed" from="main menu" to="." method="_on_menu_play_pressed"]
+[connection signal="timeout" from="DeathScreen/RespawnTimer" to="." method="_on_respawn_timer_timeout"]

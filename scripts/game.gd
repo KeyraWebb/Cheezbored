@@ -40,3 +40,11 @@ func _input(event: InputEvent) -> void:
 
 func die() -> void:
 	remove_child(active_level)
+	death_screen.show()
+	respawn_timer.start()
+
+
+func _on_respawn_timer_timeout() -> void:
+	death_screen.hide()
+	active_level.restart()
+	add_child(active_level)
