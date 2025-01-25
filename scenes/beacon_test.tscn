@@ -1,19 +1,162 @@
-[gd_scene load_steps=8 format=3 uid="uid://da5yt61ghl5ak"]
+[gd_scene load_steps=30 format=3 uid="uid://b2ipms3d14nx"]
 
 [ext_resource type="PackedScene" uid="uid://df6n5fnrrtxh8" path="res://scenes/objects/player.tscn" id="1_fd84c"]
 [ext_resource type="Script" path="res://scripts/beacon_area.gd" id="2_layvb"]
 [ext_resource type="Texture2D" uid="uid://cgd2ekpq1u484" path="res://icon.svg" id="2_r61nq"]
-[ext_resource type="PackedScene" uid="uid://dcnsaytirumkn" path="res://scenes/ui/tooltip.tscn" id="4_ultpx"]
+[ext_resource type="PackedScene" path="res://scenes/ui/tooltip.tscn" id="4_ultpx"]
 [ext_resource type="PackedScene" uid="uid://cs1exj1uj3x2t" path="res://scenes/objects/huge_man.tscn" id="5_vgrs3"]
 [ext_resource type="PackedScene" uid="uid://b20e8kh6v6fc0" path="res://scenes/objects/shark.tscn" id="6_jr3ct"]
+[ext_resource type="PackedScene" uid="uid://cvux58ossusty" path="res://scenes/ui/oxygen_timer.tscn" id="7_l6yig"]
+[ext_resource type="Texture2D" uid="uid://dtxjbtwx02yi" path="res://assets/sprites/spritesheets/JellyFish.png" id="8_iitdt"]
+[ext_resource type="Texture2D" uid="uid://c8ldsanjg002o" path="res://assets/sprites/spritesheets/Seaweed-Single.png" id="9_alv3v"]
+[ext_resource type="Texture2D" uid="uid://b6tjvb6ndwjd0" path="res://assets/sprites/spritesheets/TunaFish.png" id="10_yjktp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hcre"]
 size = Vector2(99.5, 129)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_msvdw"]
+atlas = ExtResource("8_iitdt")
+region = Rect2(0, 0, 302, 514)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byakr"]
+atlas = ExtResource("8_iitdt")
+region = Rect2(302, 0, 302, 514)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lgcr"]
+atlas = ExtResource("8_iitdt")
+region = Rect2(604, 0, 302, 514)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l55ff"]
+atlas = ExtResource("8_iitdt")
+region = Rect2(0, 514, 302, 514)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_maffc"]
+atlas = ExtResource("8_iitdt")
+region = Rect2(302, 514, 302, 514)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l7vjd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_msvdw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byakr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lgcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l55ff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_maffc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bhjo"]
+atlas = ExtResource("9_alv3v")
+region = Rect2(0, 0, 514, 514)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk5ij"]
+atlas = ExtResource("9_alv3v")
+region = Rect2(514, 0, 514, 514)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uvom"]
+atlas = ExtResource("9_alv3v")
+region = Rect2(1028, 0, 514, 514)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohqvb"]
+atlas = ExtResource("9_alv3v")
+region = Rect2(0, 514, 514, 514)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f30n2"]
+atlas = ExtResource("9_alv3v")
+region = Rect2(514, 514, 514, 514)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhldw"]
+atlas = ExtResource("9_alv3v")
+region = Rect2(1028, 514, 514, 514)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5l6qi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bhjo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lk5ij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uvom")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohqvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f30n2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhldw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8174e"]
+atlas = ExtResource("10_yjktp")
+region = Rect2(0, 0, 514, 302)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2s8or"]
+atlas = ExtResource("10_yjktp")
+region = Rect2(514, 0, 514, 302)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0a5po"]
+atlas = ExtResource("10_yjktp")
+region = Rect2(0, 302, 514, 302)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtt0q"]
+atlas = ExtResource("10_yjktp")
+region = Rect2(514, 302, 514, 302)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hkxxa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8174e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2s8or")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0a5po")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtt0q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="BeaconTest" type="Node2D"]
 
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="OxygenTimer" parent="HUD" instance=ExtResource("7_l6yig")]
+unique_name_in_owner = true
+deplete_delay = 40
+metadata/_edit_use_anchors_ = true
+
 [node name="Player" parent="." instance=ExtResource("1_fd84c")]
-position = Vector2(-3, -266)
+position = Vector2(912, 568)
+walk_speed = null
+jump_velocity = null
+swim_speed = null
 
 [node name="BeaconArea" type="Area2D" parent="." node_paths=PackedStringArray("tooltip")]
 visible = false
@@ -31,7 +174,6 @@ position = Vector2(294.25, -124.5)
 shape = SubResource("RectangleShape2D_7hcre")
 
 [node name="tooltip" parent="BeaconArea" instance=ExtResource("4_ultpx")]
-visible = true
 offset_left = 55.0
 offset_top = -58.0
 offset_right = 95.0
@@ -41,6 +183,25 @@ offset_bottom = -18.0
 visible = false
 
 [node name="shark" parent="." instance=ExtResource("6_jr3ct")]
+position = Vector2(1456, 520)
+
+[node name="jellyfish" type="AnimatedSprite2D" parent="."]
+position = Vector2(366, 587)
+sprite_frames = SubResource("SpriteFrames_l7vjd")
+autoplay = "default"
+
+[node name="seaweed" type="AnimatedSprite2D" parent="."]
+position = Vector2(645, 838)
+sprite_frames = SubResource("SpriteFrames_5l6qi")
+autoplay = "default"
+frame = 4
+frame_progress = 0.0101172
+
+[node name="TunaFish" type="AnimatedSprite2D" parent="."]
+position = Vector2(1082, 726)
+sprite_frames = SubResource("SpriteFrames_hkxxa")
+autoplay = "default"
+frame_progress = 0.206219
 
 [connection signal="area_entered" from="BeaconArea" to="BeaconArea" method="_on_area_entered"]
 [connection signal="area_exited" from="BeaconArea" to="BeaconArea" method="_on_area_exited"]
