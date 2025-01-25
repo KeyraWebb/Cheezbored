@@ -5,15 +5,21 @@ class_name OxygenTimer
 @export var oxygen_display: Label
 @export var low_oxygen_color: Color
 
+var color: Color
 var deplete_timer = 0
-var oxygen = 100
+var oxygen = 100:
+	set(value):
+		if value >= 100:
+			oxygen_display.set("theme_override_colors/font_color", color)
+			deplete_timer = 0
+		oxygen = value
 
 signal on_depleted
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	color = oxygen_display.get_theme_color("font_color")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,4 +42,5 @@ func _physics_process(delta: float) -> void:
 #for when oxygen runs out
 func oxygen_depleted():
 	oxygen_display.text = "Oxygen: N/A"
+	on_depleted.emit()
 	

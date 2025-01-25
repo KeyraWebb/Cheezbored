@@ -30,7 +30,8 @@ script = ExtResource("1_xjn78")
 
 [node name="OxygenTimer" parent="HUD" instance=ExtResource("1_r1edr")]
 unique_name_in_owner = true
-deplete_delay = 50
+deplete_delay = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Player" parent="." instance=ExtResource("1_dsi1s")]
 position = Vector2(960, 1024)
@@ -135,7 +136,6 @@ scale = Vector2(1152, 10)
 texture = SubResource("PlaceholderTexture2D_j1sx0")
 
 [node name="Ceiling" type="StaticBody2D" parent="Borders"]
-position = Vector2(0, -1088)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Ceiling"]
 shape = SubResource("WorldBoundaryShape2D_1ylnl")
@@ -156,3 +156,5 @@ visible = false
 position = Vector2(0, 5)
 scale = Vector2(1152, 10)
 texture = SubResource("PlaceholderTexture2D_j1sx0")
+
+[connection signal="on_depleted" from="HUD/OxygenTimer" to="." method="_on_death"]
