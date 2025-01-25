@@ -15,27 +15,30 @@ normal = Vector2(0, 1)
 [node name="ZoneLoaderTest" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_5dfng")]
-position = Vector2(0, -80)
+position = Vector2(960, 1024)
 walk_speed = 900.0
 swim_speed = 500.0
 
 [node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(0, 1072)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 shape = SubResource("WorldBoundaryShape2D_c0pn0")
 
 [node name="Sprite2D" type="Sprite2D" parent="Ground"]
+visible = false
 position = Vector2(0, 5)
 scale = Vector2(1152, 10)
 texture = SubResource("PlaceholderTexture2D_j1sx0")
 
 [node name="Ceiling" type="StaticBody2D" parent="."]
-position = Vector2(-8, -1093)
+position = Vector2(0, -1088)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling"]
 shape = SubResource("WorldBoundaryShape2D_1ylnl")
 
 [node name="Sprite2D" type="Sprite2D" parent="Ceiling"]
+visible = false
 position = Vector2(0, 5)
 scale = Vector2(1152, 10)
 texture = SubResource("PlaceholderTexture2D_j1sx0")
@@ -52,7 +55,6 @@ offset_bottom = 23.0
 text = "TEXT"
 
 [node name="Ocean Floor" parent="Zones" instance=ExtResource("3_v1qq2")]
-position = Vector2(-961, -1024)
 
 [node name="Kelp Forest" type="Node2D" parent="Zones" groups=["Zones"]]
 position = Vector2(1960, -624)
