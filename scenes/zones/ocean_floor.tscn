@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://cmqbyvfy0nnwb"]
+
+[node name="Ocean Floor" type="Node2D" groups=["Zones"]]
+scale = Vector2(0.5, 0.5)

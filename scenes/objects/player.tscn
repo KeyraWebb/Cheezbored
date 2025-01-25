@@ -28,8 +28,9 @@ scale = Vector2(0.0333183, 0.0374684)
 texture = ExtResource("3_0kmt2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-limit_top = -2000
-limit_bottom = 50
+limit_left = 0
+limit_top = -1088
+limit_bottom = 1080
 position_smoothing_enabled = true
 
 [node name="InteractionDetection" type="Area2D" parent="."]
