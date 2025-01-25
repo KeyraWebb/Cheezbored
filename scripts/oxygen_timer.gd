@@ -16,12 +16,18 @@ func _process(delta: float) -> void:
 	if deplete_timer >= deplete_delay:
 		oxygen -= 1
 		deplete_timer = 0
-	else:
+	elif oxygen > 0:
 		deplete_timer += 1
 		
 	if oxygen < 20:
 		oxygen_display.set("theme_override_colors/font_color", low_oxygen_color)
 	
+	if oxygen <= 0:
+		oxygen_depleted()
+	
 	oxygen_display.text = "Oxygen: " + str(oxygen) + "%"
+
+#for when oxygen runs out
+func oxygen_depleted():
 	pass
 	
