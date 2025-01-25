@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://crs5bfilcviv6"]
+[gd_scene load_steps=9 format=3 uid="uid://crs5bfilcviv6"]
 
 [ext_resource type="PackedScene" uid="uid://df6n5fnrrtxh8" path="res://scenes/objects/player.tscn" id="1_5dfng"]
-[ext_resource type="Texture2D" uid="uid://c5u8aug8o1qd0" path="res://assets/sprites/Setting Image temp.png" id="2_avkxb"]
 [ext_resource type="Script" path="res://scripts/zones.gd" id="2_usm80"]
+[ext_resource type="Texture2D" uid="uid://b4wivdan60b3l" path="res://assets/sprites/backgrounds/OceanFloorRear.png" id="3_4ws3a"]
 [ext_resource type="PackedScene" uid="uid://cmqbyvfy0nnwb" path="res://scenes/zones/ocean_floor.tscn" id="3_v1qq2"]
+[ext_resource type="Texture2D" uid="uid://bfws0r5mvw126" path="res://assets/sprites/backgrounds/OceanFloorFront.png" id="4_v5auo"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_c0pn0"]
 
@@ -54,31 +55,46 @@ offset_right = 40.0
 offset_bottom = 23.0
 text = "TEXT"
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Zones"]
+
+[node name="OceanBack" type="ParallaxLayer" parent="Zones/ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.2)
+
+[node name="Background" type="Sprite2D" parent="Zones/ParallaxBackground/OceanBack"]
+z_index = -20
+position = Vector2(0, -540)
+texture = ExtResource("3_4ws3a")
+centered = false
+
+[node name="OceanMid" type="ParallaxLayer" parent="Zones/ParallaxBackground"]
+motion_scale = Vector2(0.4, 0.4)
+
+[node name="foreground" type="Sprite2D" parent="Zones/ParallaxBackground/OceanMid"]
+texture = ExtResource("4_v5auo")
+centered = false
+
+[node name="ParallaxForeground" type="ParallaxBackground" parent="Zones"]
+layer = 99
+
+[node name="OceanMid" type="ParallaxLayer" parent="Zones/ParallaxForeground"]
+motion_scale = Vector2(2, 2)
+
+[node name="foreground" type="Sprite2D" parent="Zones/ParallaxForeground/OceanMid"]
+modulate = Color(0.541968, 0.431687, 0.245833, 1)
+position = Vector2(0, 152)
+texture = ExtResource("4_v5auo")
+centered = false
+
 [node name="Ocean Floor" parent="Zones" instance=ExtResource("3_v1qq2")]
 
 [node name="Kelp Forest" type="Node2D" parent="Zones" groups=["Zones"]]
 position = Vector2(1960, -624)
 scale = Vector2(0.5, 0.5)
 
-[node name="Background" type="Sprite2D" parent="Zones/Kelp Forest"]
-z_index = -20
-position = Vector2(1760, 0)
-texture = ExtResource("2_avkxb")
-
 [node name="Popped Town" type="Node2D" parent="Zones" groups=["Zones"]]
 position = Vector2(4230, -624)
 scale = Vector2(0.5, 0.5)
 
-[node name="Background" type="Sprite2D" parent="Zones/Popped Town"]
-z_index = -20
-position = Vector2(1760, 0)
-texture = ExtResource("2_avkxb")
-
 [node name="Rocky Outcrops" type="Node2D" parent="Zones" groups=["Zones"]]
 position = Vector2(6839, -624)
 scale = Vector2(0.5, 0.5)
-
-[node name="Background" type="Sprite2D" parent="Zones/Rocky Outcrops"]
-z_index = -20
-position = Vector2(1760, 0)
-texture = ExtResource("2_avkxb")

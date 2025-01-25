@@ -1,25 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmqbyvfy0nnwb"]
-
-[ext_resource type="Texture2D" uid="uid://b4wivdan60b3l" path="res://assets/sprites/backgrounds/OceanFloorRear.png" id="1_revos"]
-[ext_resource type="Texture2D" uid="uid://bfws0r5mvw126" path="res://assets/sprites/backgrounds/OceanFloorFront.png" id="2_wjmti"]
+[gd_scene format=3 uid="uid://cmqbyvfy0nnwb"]
 
 [node name="Ocean Floor" type="Node2D" groups=["Zones"]]
 scale = Vector2(0.5, 0.5)
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.2, 0.2)
-
-[node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-z_index = -20
-position = Vector2(0, -540)
-texture = ExtResource("1_revos")
-centered = false
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.4, 0.4)
-
-[node name="foreground" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-texture = ExtResource("2_wjmti")
-centered = false
