@@ -13,15 +13,8 @@ size = Vector2(99.5, 129)
 
 [node name="BeaconTest" type="Node2D"]
 
-[node name="HUD" type="CanvasLayer" parent="."]
-
-[node name="OxygenTimer" parent="HUD" instance=ExtResource("7_l6yig")]
-unique_name_in_owner = true
-deplete_delay = 40
-metadata/_edit_use_anchors_ = true
-
 [node name="Player" parent="." instance=ExtResource("1_fd84c")]
-position = Vector2(912, 568)
+position = Vector2(-3, -266)
 walk_speed = null
 jump_velocity = null
 swim_speed = null
@@ -51,7 +44,13 @@ offset_bottom = -18.0
 visible = false
 
 [node name="shark" parent="." instance=ExtResource("6_jr3ct")]
-position = Vector2(1456, 520)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="OxygenTimer" parent="HUD" instance=ExtResource("7_l6yig")]
+unique_name_in_owner = true
+deplete_delay = 40
+metadata/_edit_use_anchors_ = true
 
 [connection signal="area_entered" from="BeaconArea" to="BeaconArea" method="_on_area_entered"]
 [connection signal="area_exited" from="BeaconArea" to="BeaconArea" method="_on_area_exited"]

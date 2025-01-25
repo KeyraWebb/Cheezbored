@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://crs5bfilcviv6"]
+[gd_scene load_steps=17 format=3 uid="uid://bswau3t7smage"]
 
 [ext_resource type="PackedScene" uid="uid://df6n5fnrrtxh8" path="res://scenes/objects/player.tscn" id="1_dsi1s"]
 [ext_resource type="PackedScene" uid="uid://cvux58ossusty" path="res://scenes/ui/oxygen_timer.tscn" id="1_r1edr"]
@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://biuxyiktdjo2d" path="res://scenes/objects/beacon_area.tscn" id="3_rtwnx"]
 [ext_resource type="Texture2D" uid="uid://bfws0r5mvw126" path="res://assets/sprites/backgrounds/OceanFloorFront.png" id="4_8eb2o"]
 [ext_resource type="PackedScene" uid="uid://cmqbyvfy0nnwb" path="res://scenes/zones/ocean_floor.tscn" id="5_it44k"]
-[ext_resource type="PackedScene" uid="uid://015qpi431l65" path="res://scenes/objects/oxygen_dispenser.tscn" id="6_eijx3"]
-[ext_resource type="PackedScene" uid="uid://dfwd1jovxn5q3" path="res://scenes/objects/pipe.tscn" id="7_3dd0i"]
+[ext_resource type="PackedScene" path="res://scenes/objects/oxygen_dispenser.tscn" id="6_eijx3"]
+[ext_resource type="PackedScene" path="res://scenes/objects/pipe.tscn" id="7_3dd0i"]
 [ext_resource type="Script" path="res://scripts/beacon.gd" id="9_yavqo"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_c0pn0"]
