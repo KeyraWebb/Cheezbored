@@ -1,0 +1,99 @@
+[gd_scene load_steps=8 format=3 uid="uid://bqqvg1pgw4hd7"]
+
+[ext_resource type="PackedScene" uid="uid://df6n5fnrrtxh8" path="res://scenes/objects/player.tscn" id="1_cqi4o"]
+[ext_resource type="Texture2D" uid="uid://c5u8aug8o1qd0" path="res://assets/sprites/Setting Image temp.png" id="2_k6o3p"]
+[ext_resource type="Script" path="res://scripts/zone.gd" id="3_p8d6g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_008sg"]
+size = Vector2(2020, 1175)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_c0pn0"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_j1sx0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_etm6h"]
+size = Vector2(3506, 2482)
+
+[node name="ZoneLoader" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_cqi4o")]
+position = Vector2(973, 567)
+
+[node name="playertrigger" type="Area2D" parent="Player"]
+position = Vector2(-10, -6)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/playertrigger"]
+position = Vector2(-7, -0.5)
+shape = SubResource("RectangleShape2D_008sg")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(920, 693)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+shape = SubResource("WorldBoundaryShape2D_c0pn0")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+position = Vector2(0, 5)
+scale = Vector2(1152, 10)
+texture = SubResource("PlaceholderTexture2D_j1sx0")
+
+[node name="Zone" type="Sprite2D" parent="." node_paths=PackedStringArray("player_trigger")]
+z_index = -20
+position = Vector2(203, 580)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_k6o3p")
+script = ExtResource("3_p8d6g")
+player_trigger = NodePath("../Player/playertrigger")
+
+[node name="ZoneTrigger" type="Area2D" parent="Zone"]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone/ZoneTrigger"]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_etm6h")
+
+[node name="Zone4" type="Sprite2D" parent="."]
+z_index = -20
+position = Vector2(-1554, 583)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_k6o3p")
+
+[node name="ZoneTrigger" type="Area2D" parent="Zone4"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone4/ZoneTrigger"]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_etm6h")
+
+[node name="Zone2" type="Sprite2D" parent="."]
+z_index = -20
+position = Vector2(1950, 583)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_k6o3p")
+
+[node name="ZoneTrigger" type="Area2D" parent="Zone2"]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone2/ZoneTrigger"]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_etm6h")
+
+[node name="Zone3" type="Sprite2D" parent="."]
+z_index = -20
+position = Vector2(3704, 586)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_k6o3p")
+
+[node name="ZoneTrigger" type="Area2D" parent="Zone3"]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone3/ZoneTrigger"]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_etm6h")
+
+[connection signal="area_entered" from="Player/playertrigger" to="Zone" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Player/playertrigger" to="Zone" method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="Zone/ZoneTrigger" to="Player" method="_on_zone_trigger_area_entered"]
