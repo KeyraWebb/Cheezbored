@@ -38,7 +38,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Player" parent="." instance=ExtResource("1_dsi1s")]
 position = Vector2(960, 1024)
 walk_speed = 900.0
-swim_speed = 5000.0
+swim_speed = 300.0
 
 [node name="Borders" type="Node2D" parent="."]
 
@@ -250,5 +250,7 @@ position = Vector2(3840, 0)
 [node name="Node" type="Node" parent="PipeLayer"]
 
 [connection signal="on_depleted" from="HUD/OxygenTimer" to="." method="_on_death"]
+[connection signal="set_respawn" from="PipeLayer/Beacon1" to="." method="_on_beacon_set_respawn"]
 [connection signal="on_beacon_placed" from="PipeLayer/Beacon1/BeaconArea" to="PipeLayer/Beacon1" method="on_beacon_placed"]
+[connection signal="set_respawn" from="PipeLayer/Beacon2" to="." method="_on_beacon_set_respawn"]
 [connection signal="on_beacon_placed" from="PipeLayer/Beacon2/BeaconArea" to="PipeLayer/Beacon2" method="on_beacon_placed"]
