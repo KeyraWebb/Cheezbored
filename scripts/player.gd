@@ -28,3 +28,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	active_controller.update(delta)
+
+
+func _on_sight_area_exited(area: Area2D) -> void:
+	pass # Replace with function body.
