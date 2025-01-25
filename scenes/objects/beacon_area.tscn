@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://biuxyiktdjo2d"]
+
+[ext_resource type="Script" path="res://scripts/beacon_area.gd" id="1_dqcfm"]
+[ext_resource type="Texture2D" uid="uid://cgd2ekpq1u484" path="res://icon.svg" id="2_janhl"]
+[ext_resource type="PackedScene" uid="uid://dcnsaytirumkn" path="res://scenes/ui/tooltip.tscn" id="3_s05lk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hcre"]
+size = Vector2(99.5, 129)
+
+[node name="BeaconArea" type="Area2D" node_paths=PackedStringArray("tooltip")]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_dqcfm")
+tooltip = NodePath("tooltip")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(292, -123)
+texture = ExtResource("2_janhl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(294.25, -124.5)
+shape = SubResource("RectangleShape2D_7hcre")
+
+[node name="tooltip" parent="." instance=ExtResource("3_s05lk")]
+visible = true
+offset_left = 55.0
+offset_top = -58.0
+offset_right = 95.0
+offset_bottom = -18.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
