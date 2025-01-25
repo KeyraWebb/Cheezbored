@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=3 uid="uid://crs5bfilcviv6"]
+
+[ext_resource type="PackedScene" uid="uid://df6n5fnrrtxh8" path="res://scenes/objects/player.tscn" id="1_5dfng"]
+[ext_resource type="Texture2D" uid="uid://c5u8aug8o1qd0" path="res://assets/sprites/Setting Image temp.png" id="2_avkxb"]
+[ext_resource type="Script" path="res://scripts/zones.gd" id="2_usm80"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_008sg"]
+size = Vector2(2020, 1175)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_c0pn0"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_j1sx0"]
+
+[node name="ZoneLoaderTest" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_5dfng")]
+position = Vector2(0, -80)
+walk_speed = 900.0
+
+[node name="playertrigger" type="Area2D" parent="Player"]
+position = Vector2(-10, -6)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/playertrigger"]
+position = Vector2(-7, -0.5)
+shape = SubResource("RectangleShape2D_008sg")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+shape = SubResource("WorldBoundaryShape2D_c0pn0")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+position = Vector2(0, 5)
+scale = Vector2(1152, 10)
+texture = SubResource("PlaceholderTexture2D_j1sx0")
+
+[node name="Zones" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("2_usm80")
+player = NodePath("../Player")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Zones"]
+
+[node name="Label" type="Label" parent="Zones/CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "TEXT"
+
+[node name="Ocean Floor" type="Node2D" parent="Zones" groups=["Zones"]]
+position = Vector2(0, -624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Background" type="Sprite2D" parent="Zones/Ocean Floor"]
+z_index = -20
+position = Vector2(1760, 0)
+texture = ExtResource("2_avkxb")
+
+[node name="Kelp Forest" type="Node2D" parent="Zones" groups=["Zones"]]
+position = Vector2(1960, -624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Background" type="Sprite2D" parent="Zones/Kelp Forest"]
+z_index = -20
+position = Vector2(1760, 0)
+texture = ExtResource("2_avkxb")
+
+[node name="Popped Town" type="Node2D" parent="Zones" groups=["Zones"]]
+position = Vector2(4230, -624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Background" type="Sprite2D" parent="Zones/Popped Town"]
+z_index = -20
+position = Vector2(1760, 0)
+texture = ExtResource("2_avkxb")
+
+[node name="Rocky Outcrops" type="Node2D" parent="Zones" groups=["Zones"]]
+position = Vector2(6839, -624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Background" type="Sprite2D" parent="Zones/Rocky Outcrops"]
+z_index = -20
+position = Vector2(1760, 0)
+texture = ExtResource("2_avkxb")
+
+[connection signal="area_entered" from="Player/playertrigger" to="Zones/Ocean Floor/Background" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Player/playertrigger" to="Zones/Ocean Floor/Background" method="_on_area_2d_area_exited"]
