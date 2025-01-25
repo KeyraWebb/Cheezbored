@@ -32,4 +32,3 @@ func _physics_process(delta: float) -> void:
 
 func fill_oxygen() -> void:
 	oxygen_timer.oxygen = 100
-

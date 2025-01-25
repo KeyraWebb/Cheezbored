@@ -1,7 +1,44 @@
-[gd_scene load_steps=7 format=3 uid="uid://b20e8kh6v6fc0"]
+[gd_scene load_steps=13 format=3 uid="uid://b20e8kh6v6fc0"]
 
 [ext_resource type="Script" path="res://shark.gd" id="1_qmmix"]
+[ext_resource type="Texture2D" uid="uid://4vg3jy1b2i0k" path="res://assets/sprites/spritesheets/SharkSwim.png" id="2_l4gbx"]
 [ext_resource type="Texture2D" uid="uid://cgd2ekpq1u484" path="res://icon.svg" id="2_xqthd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ba25p"]
+atlas = ExtResource("2_l4gbx")
+region = Rect2(0, 0, 902, 514)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50h4x"]
+atlas = ExtResource("2_l4gbx")
+region = Rect2(902, 0, 902, 514)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0c6dl"]
+atlas = ExtResource("2_l4gbx")
+region = Rect2(0, 514, 902, 514)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42pg7"]
+atlas = ExtResource("2_l4gbx")
+region = Rect2(902, 514, 902, 514)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u765g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ba25p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50h4x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0c6dl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42pg7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="GDScript" id="GDScript_7oxfd"]
 script/source = "extends Area2D
@@ -20,18 +57,25 @@ func _process(delta: float) -> void:
 [sub_resource type="CircleShape2D" id="CircleShape2D_oum8q"]
 radius = 381.525
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ewvbl"]
-radius = 73.7631
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dh5ni"]
+radius = 31.9925
+height = 272.977
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mehqs"]
-radius = 48.0
-height = 194.0
+radius = 24.1207
+height = 255.969
 
-[node name="shark" type="CharacterBody2D" node_paths=PackedStringArray("player")]
+[node name="shark" type="CharacterBody2D"]
 position = Vector2(368, -416)
 script = ExtResource("1_qmmix")
 movespeed = 50
-player = NodePath("")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_u765g")
+autoplay = "default"
+frame = 1
+frame_progress = 0.736229
 
 [node name="sight" type="Area2D" parent="."]
 collision_layer = 2
@@ -42,6 +86,7 @@ script = SubResource("GDScript_7oxfd")
 shape = SubResource("CircleShape2D_oum8q")
 
 [node name="Shark" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_xqthd")
 
 [node name="killzone" type="Area2D" parent="."]
@@ -49,9 +94,12 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
-shape = SubResource("CircleShape2D_ewvbl")
+position = Vector2(0, 8)
+rotation = 1.56804
+shape = SubResource("CapsuleShape2D_dh5ni")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
 rotation = 1.55535
 shape = SubResource("CapsuleShape2D_mehqs")
 
