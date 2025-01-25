@@ -11,8 +11,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4e82b")
-deplete_delay = 100
+deplete_delay = 5
 oxygen_display = NodePath("OxygenDisplay")
+low_oxygen_color = Color(0.900814, 0.138532, 0, 1)
 
 [node name="OxygenDisplay" type="Label" parent="."]
 layout_mode = 1
