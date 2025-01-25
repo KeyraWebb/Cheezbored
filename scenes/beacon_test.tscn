@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b2ipms3d14nx"]
+[gd_scene load_steps=12 format=3 uid="uid://b2ipms3d14nx"]
 
 [ext_resource type="PackedScene" uid="uid://df6n5fnrrtxh8" path="res://scenes/objects/player.tscn" id="1_fd84c"]
 [ext_resource type="Script" path="res://scripts/beacon_area.gd" id="2_layvb"]
@@ -7,141 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://cs1exj1uj3x2t" path="res://scenes/objects/huge_man.tscn" id="5_vgrs3"]
 [ext_resource type="PackedScene" uid="uid://b20e8kh6v6fc0" path="res://scenes/objects/shark.tscn" id="6_jr3ct"]
 [ext_resource type="PackedScene" uid="uid://cvux58ossusty" path="res://scenes/ui/oxygen_timer.tscn" id="7_l6yig"]
-[ext_resource type="Texture2D" uid="uid://dtxjbtwx02yi" path="res://assets/sprites/spritesheets/JellyFish.png" id="8_iitdt"]
-[ext_resource type="Texture2D" uid="uid://c8ldsanjg002o" path="res://assets/sprites/spritesheets/Seaweed-Single.png" id="9_alv3v"]
-[ext_resource type="Texture2D" uid="uid://b6tjvb6ndwjd0" path="res://assets/sprites/spritesheets/TunaFish.png" id="10_yjktp"]
+[ext_resource type="PackedScene" uid="uid://c0mvjyg3yfh7t" path="res://scenes/objects/jellyfish.tscn" id="8_iv8lr"]
+[ext_resource type="PackedScene" uid="uid://b7y5ytxibpi5e" path="res://scenes/objects/seaweed.tscn" id="9_emq42"]
+[ext_resource type="PackedScene" uid="uid://8amkkokbu6c8" path="res://scenes/objects/tuna_fish.tscn" id="10_usbi5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hcre"]
 size = Vector2(99.5, 129)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_msvdw"]
-atlas = ExtResource("8_iitdt")
-region = Rect2(0, 0, 302, 514)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_byakr"]
-atlas = ExtResource("8_iitdt")
-region = Rect2(302, 0, 302, 514)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1lgcr"]
-atlas = ExtResource("8_iitdt")
-region = Rect2(604, 0, 302, 514)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l55ff"]
-atlas = ExtResource("8_iitdt")
-region = Rect2(0, 514, 302, 514)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_maffc"]
-atlas = ExtResource("8_iitdt")
-region = Rect2(302, 514, 302, 514)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_l7vjd"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_msvdw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_byakr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1lgcr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l55ff")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_maffc")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0bhjo"]
-atlas = ExtResource("9_alv3v")
-region = Rect2(0, 0, 514, 514)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lk5ij"]
-atlas = ExtResource("9_alv3v")
-region = Rect2(514, 0, 514, 514)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5uvom"]
-atlas = ExtResource("9_alv3v")
-region = Rect2(1028, 0, 514, 514)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ohqvb"]
-atlas = ExtResource("9_alv3v")
-region = Rect2(0, 514, 514, 514)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f30n2"]
-atlas = ExtResource("9_alv3v")
-region = Rect2(514, 514, 514, 514)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fhldw"]
-atlas = ExtResource("9_alv3v")
-region = Rect2(1028, 514, 514, 514)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_5l6qi"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0bhjo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lk5ij")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5uvom")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ohqvb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f30n2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fhldw")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8174e"]
-atlas = ExtResource("10_yjktp")
-region = Rect2(0, 0, 514, 302)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2s8or"]
-atlas = ExtResource("10_yjktp")
-region = Rect2(514, 0, 514, 302)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0a5po"]
-atlas = ExtResource("10_yjktp")
-region = Rect2(0, 302, 514, 302)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dtt0q"]
-atlas = ExtResource("10_yjktp")
-region = Rect2(514, 302, 514, 302)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_hkxxa"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8174e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2s8or")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0a5po")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dtt0q")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [node name="BeaconTest" type="Node2D"]
 
@@ -185,23 +56,11 @@ visible = false
 [node name="shark" parent="." instance=ExtResource("6_jr3ct")]
 position = Vector2(1456, 520)
 
-[node name="jellyfish" type="AnimatedSprite2D" parent="."]
-position = Vector2(366, 587)
-sprite_frames = SubResource("SpriteFrames_l7vjd")
-autoplay = "default"
+[node name="jellyfish" parent="." instance=ExtResource("8_iv8lr")]
 
-[node name="seaweed" type="AnimatedSprite2D" parent="."]
-position = Vector2(645, 838)
-sprite_frames = SubResource("SpriteFrames_5l6qi")
-autoplay = "default"
-frame = 4
-frame_progress = 0.0101172
+[node name="seaweed" parent="." instance=ExtResource("9_emq42")]
 
-[node name="TunaFish" type="AnimatedSprite2D" parent="."]
-position = Vector2(1082, 726)
-sprite_frames = SubResource("SpriteFrames_hkxxa")
-autoplay = "default"
-frame_progress = 0.206219
+[node name="TunaFish" parent="." instance=ExtResource("10_usbi5")]
 
 [connection signal="area_entered" from="BeaconArea" to="BeaconArea" method="_on_area_entered"]
 [connection signal="area_exited" from="BeaconArea" to="BeaconArea" method="_on_area_exited"]

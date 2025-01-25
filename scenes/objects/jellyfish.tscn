@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0mvjyg3yfh7t"]
+
+[ext_resource type="Texture2D" uid="uid://dtxjbtwx02yi" path="res://assets/sprites/spritesheets/JellyFish.png" id="1_jwu5g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_msvdw"]
+atlas = ExtResource("1_jwu5g")
+region = Rect2(0, 0, 302, 514)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byakr"]
+atlas = ExtResource("1_jwu5g")
+region = Rect2(302, 0, 302, 514)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lgcr"]
+atlas = ExtResource("1_jwu5g")
+region = Rect2(604, 0, 302, 514)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l55ff"]
+atlas = ExtResource("1_jwu5g")
+region = Rect2(0, 514, 302, 514)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_maffc"]
+atlas = ExtResource("1_jwu5g")
+region = Rect2(302, 514, 302, 514)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l7vjd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_msvdw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byakr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lgcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l55ff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_maffc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="jellyfish" type="AnimatedSprite2D"]
+position = Vector2(366, 587)
+sprite_frames = SubResource("SpriteFrames_l7vjd")
+autoplay = "default"
