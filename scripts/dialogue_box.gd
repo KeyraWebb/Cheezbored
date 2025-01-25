@@ -26,3 +26,6 @@ func _create_dialogue(speaker: String, dialogue: String) -> void:
 	
 	self.visible = true
 	
+func _hide_dialogue() -> void:
+	self.visible = false
+	
