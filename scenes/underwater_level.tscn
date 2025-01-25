@@ -35,7 +35,7 @@ deplete_delay = 50
 [node name="Player" parent="." instance=ExtResource("1_dsi1s")]
 position = Vector2(960, 1024)
 walk_speed = 900.0
-swim_speed = 300.0
+swim_speed = 800.0
 
 [node name="Zones" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("2_ab1qq")

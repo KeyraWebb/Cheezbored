@@ -8,6 +8,7 @@ class_name Player
 
 @onready var ground_controller: Node = $GroundController
 @onready var water_controller: Node = $WaterController
+@onready var oxygen_timer: OxygenTimer = %OxygenTimer
 
 
 var active_controller: Node:
@@ -28,3 +29,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	active_controller.update(delta)
+
+
+func fill_oxygen() -> void:
+	oxygen_timer.oxygen = 100

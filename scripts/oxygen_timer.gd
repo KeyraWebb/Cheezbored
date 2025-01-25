@@ -1,4 +1,5 @@
 extends Control
+class_name OxygenTimer
 
 @export var deplete_delay: int
 @export var oxygen_display: Label
