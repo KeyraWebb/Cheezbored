@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://biuxyiktdjo2d"]
+[gd_scene load_steps=6 format=3 uid="uid://c12ggw0ndr0e7"]
 
 [ext_resource type="Script" path="res://scripts/beacon_area.gd" id="1_dqcfm"]
-[ext_resource type="Texture2D" uid="uid://cgd2ekpq1u484" path="res://icon.svg" id="2_janhl"]
-[ext_resource type="PackedScene" uid="uid://dcnsaytirumkn" path="res://scenes/ui/tooltip.tscn" id="3_s05lk"]
+[ext_resource type="PackedScene" path="res://scenes/objects/bubble_vent_1.tscn" id="3_2lv5p"]
+[ext_resource type="PackedScene" path="res://scenes/ui/tooltip.tscn" id="3_s05lk"]
+[ext_resource type="PackedScene" path="res://scenes/objects/bubble_vent_2.tscn" id="4_4x30m"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hcre"]
-size = Vector2(99.5, 129)
+[sub_resource type="CircleShape2D" id="CircleShape2D_72q6l"]
+radius = 213.677
 
 [node name="BeaconArea" type="Area2D" node_paths=PackedStringArray("tooltip")]
 collision_layer = 2
@@ -13,15 +14,23 @@ collision_mask = 2
 script = ExtResource("1_dqcfm")
 tooltip = NodePath("tooltip")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -64)
-texture = ExtResource("2_janhl")
+[node name="BubbleVent 1" parent="." instance=ExtResource("3_2lv5p")]
+position = Vector2(-4.76837e-07, -291)
+scale = Vector2(0.785, 0.785)
+frame = 2
+frame_progress = 0.349825
+
+[node name="BubbleVent 2" parent="." instance=ExtResource("4_4x30m")]
+visible = false
+position = Vector2(0.00012207, -289)
+scale = Vector2(0.785, 0.785)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -64)
-shape = SubResource("RectangleShape2D_7hcre")
+position = Vector2(0, -157)
+shape = SubResource("CircleShape2D_72q6l")
 
 [node name="tooltip" parent="." instance=ExtResource("3_s05lk")]
+visible = false
 offset_left = -240.0
 offset_top = -176.0
 offset_right = -200.0

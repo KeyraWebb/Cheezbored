@@ -198,24 +198,30 @@ text = "VENT"
 [node name="PipeLayer" type="Node2D" parent="."]
 script = ExtResource("9_7we8j")
 
-[node name="Beacon1" type="Node2D" parent="PipeLayer"]
-position = Vector2(8688, 1024)
+[node name="Beacon3" type="Node2D" parent="PipeLayer"]
+position = Vector2(37500, 1024)
 script = ExtResource("9_yavqo")
 
-[node name="BeaconArea" parent="PipeLayer/Beacon1" instance=ExtResource("3_rtwnx")]
+[node name="BeaconArea" parent="PipeLayer/Beacon3" instance=ExtResource("3_rtwnx")]
 
-[node name="Pipes" type="Node2D" parent="PipeLayer/Beacon1"]
+[node name="Pipes" type="Node2D" parent="PipeLayer/Beacon3"]
+position = Vector2(-5927, 0)
+
+[node name="Pipe6" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
 position = Vector2(-5760, 0)
 
-[node name="Pipe5" parent="PipeLayer/Beacon1/Pipes" instance=ExtResource("7_3dd0i")]
+[node name="Pipe8" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
+position = Vector2(-3840, 0)
+
+[node name="Pipe5" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
 position = Vector2(-1920, 0)
 
-[node name="Pipe7" parent="PipeLayer/Beacon1/Pipes" instance=ExtResource("7_3dd0i")]
+[node name="Pipe7" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
 
-[node name="Pipe 8" parent="PipeLayer/Beacon1/Pipes" instance=ExtResource("7_3dd0i")]
+[node name="Pipe 8" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
 position = Vector2(1920, 0)
 
-[node name="p" parent="PipeLayer/Beacon1/Pipes" instance=ExtResource("7_3dd0i")]
+[node name="p" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
 position = Vector2(3840, 0)
 
 [node name="Beacon2" type="Node2D" parent="PipeLayer"]
@@ -244,31 +250,25 @@ position = Vector2(1920, 0)
 [node name="p" parent="PipeLayer/Beacon2/Pipes" instance=ExtResource("7_3dd0i")]
 position = Vector2(3840, 0)
 
-[node name="Beacon3" type="Node2D" parent="PipeLayer"]
-position = Vector2(37500, 1024)
+[node name="Beacon1" type="Node2D" parent="PipeLayer"]
+position = Vector2(8688, 1024)
 script = ExtResource("9_yavqo")
 
-[node name="BeaconArea" parent="PipeLayer/Beacon3" instance=ExtResource("3_rtwnx")]
-
-[node name="Pipes" type="Node2D" parent="PipeLayer/Beacon3"]
-position = Vector2(-5927, 0)
-
-[node name="Pipe6" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
+[node name="Pipes" type="Node2D" parent="PipeLayer/Beacon1"]
 position = Vector2(-5760, 0)
 
-[node name="Pipe8" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
-position = Vector2(-3840, 0)
-
-[node name="Pipe5" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
+[node name="Pipe5" parent="PipeLayer/Beacon1/Pipes" instance=ExtResource("7_3dd0i")]
 position = Vector2(-1920, 0)
 
-[node name="Pipe7" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
+[node name="Pipe7" parent="PipeLayer/Beacon1/Pipes" instance=ExtResource("7_3dd0i")]
 
-[node name="Pipe 8" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
+[node name="Pipe 8" parent="PipeLayer/Beacon1/Pipes" instance=ExtResource("7_3dd0i")]
 position = Vector2(1920, 0)
 
-[node name="p" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
+[node name="p" parent="PipeLayer/Beacon1/Pipes" instance=ExtResource("7_3dd0i")]
 position = Vector2(3840, 0)
+
+[node name="BeaconArea" parent="PipeLayer/Beacon1" instance=ExtResource("3_rtwnx")]
 
 [node name="EventTriggers" type="Node2D" parent="."]
 script = ExtResource("13_xmfje")
@@ -277,6 +277,6 @@ script = ExtResource("13_xmfje")
 script = ExtResource("14_y6qs1")
 
 [connection signal="on_depleted" from="HUD/OxygenTimer" to="." method="_on_death"]
-[connection signal="on_beacon_placed" from="PipeLayer/Beacon1/BeaconArea" to="PipeLayer/Beacon1" method="on_beacon_placed"]
-[connection signal="on_beacon_placed" from="PipeLayer/Beacon2/BeaconArea" to="PipeLayer/Beacon2" method="on_beacon_placed"]
 [connection signal="on_beacon_placed" from="PipeLayer/Beacon3/BeaconArea" to="PipeLayer/Beacon3" method="on_beacon_placed"]
+[connection signal="on_beacon_placed" from="PipeLayer/Beacon2/BeaconArea" to="PipeLayer/Beacon2" method="on_beacon_placed"]
+[connection signal="on_beacon_placed" from="PipeLayer/Beacon1/BeaconArea" to="PipeLayer/Beacon1" method="on_beacon_placed"]
