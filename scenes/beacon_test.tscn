@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b2ipms3d14nx"]
+[gd_scene load_steps=15 format=3 uid="uid://b2ipms3d14nx"]
 
 [ext_resource type="PackedScene" uid="uid://df6n5fnrrtxh8" path="res://scenes/objects/player.tscn" id="1_fd84c"]
 [ext_resource type="Script" path="res://scripts/beacon_area.gd" id="2_layvb"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://c0mvjyg3yfh7t" path="res://scenes/objects/jellyfish.tscn" id="8_iv8lr"]
 [ext_resource type="PackedScene" uid="uid://b7y5ytxibpi5e" path="res://scenes/objects/seaweed.tscn" id="9_emq42"]
 [ext_resource type="PackedScene" uid="uid://8amkkokbu6c8" path="res://scenes/objects/tuna_fish.tscn" id="10_usbi5"]
+[ext_resource type="PackedScene" uid="uid://ddaa20mcojvkh" path="res://scenes/objects/freakyman.tscn" id="11_d7y2w"]
+[ext_resource type="PackedScene" uid="uid://bafi0d2fcsgk3" path="res://scenes/objects/bubble.tscn" id="12_yqtwo"]
+[ext_resource type="PackedScene" uid="uid://bm3kiaoi1lwn6" path="res://scenes/objects/cwab.tscn" id="13_bflyu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hcre"]
 size = Vector2(99.5, 129)
@@ -17,6 +20,7 @@ size = Vector2(99.5, 129)
 [node name="BeaconTest" type="Node2D"]
 
 [node name="HUD" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="OxygenTimer" parent="HUD" instance=ExtResource("7_l6yig")]
 unique_name_in_owner = true
@@ -24,6 +28,7 @@ deplete_delay = 40
 metadata/_edit_use_anchors_ = true
 
 [node name="Player" parent="." instance=ExtResource("1_fd84c")]
+visible = false
 position = Vector2(912, 568)
 walk_speed = null
 jump_velocity = null
@@ -52,8 +57,11 @@ offset_bottom = -18.0
 
 [node name="HugeMan" parent="." instance=ExtResource("5_vgrs3")]
 visible = false
+frame = 27
+frame_progress = 1.0
 
 [node name="shark" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_jr3ct")]
+visible = false
 position = Vector2(1456, 520)
 movedelaymin = 100
 player = NodePath("../Player")
@@ -61,10 +69,26 @@ movelengthmax = 20
 movelengthmin = 100
 
 [node name="jellyfish" parent="." instance=ExtResource("8_iv8lr")]
+visible = false
 
 [node name="seaweed" parent="." instance=ExtResource("9_emq42")]
+visible = false
 
 [node name="TunaFish" parent="." instance=ExtResource("10_usbi5")]
+visible = false
+
+[node name="freakyman" parent="." instance=ExtResource("11_d7y2w")]
+visible = false
+autoplay = "default"
+
+[node name="bubble" parent="." instance=ExtResource("12_yqtwo")]
+visible = false
+autoplay = "default"
+
+[node name="cwab" parent="." instance=ExtResource("13_bflyu")]
+autoplay = "default"
+frame = 1
+frame_progress = 0.458076
 
 [connection signal="area_entered" from="BeaconArea" to="BeaconArea" method="_on_area_entered"]
 [connection signal="area_exited" from="BeaconArea" to="BeaconArea" method="_on_area_exited"]

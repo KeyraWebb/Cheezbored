@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://bm3kiaoi1lwn6"]
+
+[ext_resource type="Texture2D" uid="uid://7u05eyx3aaft" path="res://assets/sprites/spritesheets/Cwab.png" id="1_ml6ds"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65a8s"]
+atlas = ExtResource("1_ml6ds")
+region = Rect2(0, 502, 652, 502)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljbv8"]
+atlas = ExtResource("1_ml6ds")
+region = Rect2(0, 0, 652, 502)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04606"]
+atlas = ExtResource("1_ml6ds")
+region = Rect2(652, 502, 652, 502)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxeiq"]
+atlas = ExtResource("1_ml6ds")
+region = Rect2(652, 0, 652, 502)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iki8e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65a8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljbv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04606")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxeiq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="cwab" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_iki8e")
+frame_progress = 0.76515
