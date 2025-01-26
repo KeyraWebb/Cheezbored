@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnmdfkft1o87r"]
+
+[ext_resource type="Texture2D" uid="uid://bmp60ohumsk6q" path="res://assets/sprites/backgrounds/End.png" id="1_an5re"]
+[ext_resource type="Theme" uid="uid://xmw5s6ytlo3k" path="res://assets/fonts/basetext.tres" id="2_73fog"]
+
+[node name="End card" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_an5re")
+centered = false
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = -146.0
+offset_right = 847.0
+offset_bottom = -55.0
+grow_vertical = 0
+theme = ExtResource("2_73fog")
+theme_override_font_sizes/font_size = 50
+text = "Thank you for playing!"
