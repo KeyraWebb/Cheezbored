@@ -14,18 +14,17 @@ var movedirection: Vector2
 @export var movelengthmin: int
 
 @export var sprite: AnimatedSprite2D
+@onready var health_meter: HealthMeter = %HealthMeter
 
 var currentdirection = 1
 var scalebase
 
-var killplayer : Signal
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	currentdelay = rng.randi_range(movedelaymin,movedelaymax)
 	scalebase = sprite.scale.x
-	
-	pass # Replace with function body.
+	sprite.animation_finished.connect(reset_animation)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -47,15 +46,18 @@ func _process(delta: float) -> void:
 	elif velocity.x < 0: 
 		sprite.scale.x = scalebase
 		
+		
 func _physics_process(delta: float) -> void:
 	if visibletarget:
 		chase_player(delta)
 	elif movetimer > 0:
 		move_idly() 
 
+
 func move_idly() -> void:
 	velocity = movedirection * movespeed
 	move_and_slide()
+		
 		
 func chase_player(delta) -> void:
 	var player_position = player.global_position
@@ -75,6 +77,11 @@ func _on_sight_area_exited(area: Area2D) -> void:
 		visibletarget = null
 
 
+func reset_animation() -> void:
+	sprite.play("default")
+
+
 func _on_killzone_area_entered(area: Area2D) -> void:
 	if area.get_parent() == player:
-		killplayer.emit()
+		sprite.play("attack")
+		health_meter.health -= 15
