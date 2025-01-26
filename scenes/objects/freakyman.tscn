@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://ddaa20mcojvkh"]
+
+[ext_resource type="Texture2D" uid="uid://bdb3nimr01yqe" path="res://assets/sprites/spritesheets/freakyman.png" id="1_p7yfb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78v0p"]
+atlas = ExtResource("1_p7yfb")
+region = Rect2(0, 0, 412, 693)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7r6qq"]
+atlas = ExtResource("1_p7yfb")
+region = Rect2(412, 0, 412, 693)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bn7jk"]
+atlas = ExtResource("1_p7yfb")
+region = Rect2(824, 0, 412, 693)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7lk0"]
+atlas = ExtResource("1_p7yfb")
+region = Rect2(0, 693, 412, 693)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vxel0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78v0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7r6qq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bn7jk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7lk0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="freakyman" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_vxel0")
+frame = 2
+frame_progress = 0.649653
