@@ -1,0 +1,348 @@
+[gd_scene load_steps=23 format=3 uid="uid://buehahwe8ucx4"]
+
+[ext_resource type="Script" path="res://scripts/underwater_level.gd" id="1_wfyxf"]
+[ext_resource type="Script" path="res://scripts/oxygen_timer.gd" id="2_8v6s3"]
+[ext_resource type="Theme" uid="uid://xmw5s6ytlo3k" path="res://assets/fonts/basetext.tres" id="3_3neko"]
+[ext_resource type="Script" path="res://scripts/health_meter.gd" id="4_ovsfn"]
+[ext_resource type="PackedScene" uid="uid://df6n5fnrrtxh8" path="res://scenes/objects/player.tscn" id="5_gioyf"]
+[ext_resource type="PackedScene" uid="uid://beiqc86478ixd" path="res://scenes/objects/jelly_hazard.tscn" id="6_62124"]
+[ext_resource type="Script" path="res://scripts/zones.gd" id="7_3pskv"]
+[ext_resource type="Texture2D" uid="uid://c5u8aug8o1qd0" path="res://assets/sprites/Setting Image temp.png" id="8_m74jp"]
+[ext_resource type="Texture2D" uid="uid://b4wivdan60b3l" path="res://assets/sprites/backgrounds/OceanFloorRear.png" id="9_heu7a"]
+[ext_resource type="Texture2D" uid="uid://bfws0r5mvw126" path="res://assets/sprites/backgrounds/OceanFloorFront.png" id="10_47cm1"]
+[ext_resource type="PackedScene" path="res://scenes/objects/oxygen_dispenser.tscn" id="11_67ouj"]
+[ext_resource type="Script" path="res://scripts/beacon_manager.gd" id="12_i1hwl"]
+[ext_resource type="Script" path="res://scripts/beacon.gd" id="13_kwbo7"]
+[ext_resource type="PackedScene" path="res://scenes/objects/pipe.tscn" id="14_4gdr7"]
+[ext_resource type="PackedScene" uid="uid://c12ggw0ndr0e7" path="res://scenes/objects/beacon_area.tscn" id="15_xf1gj"]
+[ext_resource type="Script" path="res://scripts/event_triggers.gd" id="16_kgv82"]
+[ext_resource type="Script" path="res://scripts/scripted_event.gd" id="17_alh8t"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_c0pn0"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_j1sx0"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1ylnl"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5ynbh"]
+normal = Vector2(1, 0)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tbnus"]
+size = Vector2(200, 200)
+
+[node name="UnderwaterLevel" type="Node2D"]
+script = ExtResource("1_wfyxf")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="OxygenTimer" type="Control" parent="HUD" node_paths=PackedStringArray("oxygen_display")]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_8v6s3")
+deplete_delay = 52
+oxygen_display = NodePath("OxygenDisplay")
+low_oxygen_color = Color(1, 0.29, 0.29, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="OxygenDisplay" type="Label" parent="HUD/OxygenTimer"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -280.0
+offset_top = 65.0
+offset_right = -18.0
+offset_bottom = 120.0
+grow_horizontal = 0
+theme = ExtResource("3_3neko")
+theme_override_font_sizes/font_size = 30
+text = "Oxygen: 100%"
+horizontal_alignment = 2
+
+[node name="HealthMeter" type="Control" parent="HUD" node_paths=PackedStringArray("display")]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_ovsfn")
+display = NodePath("Display")
+metadata/_edit_use_anchors_ = true
+
+[node name="Display" type="Label" parent="HUD/HealthMeter"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -280.0
+offset_top = 20.0
+offset_right = -18.0
+offset_bottom = 75.0
+grow_horizontal = 0
+theme = ExtResource("3_3neko")
+theme_override_font_sizes/font_size = 30
+text = "Health: 100%"
+horizontal_alignment = 2
+
+[node name="Player" parent="." instance=ExtResource("5_gioyf")]
+position = Vector2(960, 1024)
+walk_speed = 900.0
+swim_speed = 2500.0
+
+[node name="Creatures" type="Node2D" parent="."]
+position = Vector2(1399, 535)
+
+[node name="Jellies" type="Node2D" parent="Creatures"]
+
+[node name="JellyHazard" parent="Creatures/Jellies" instance=ExtResource("6_62124")]
+position = Vector2(0, 0)
+movedelaymax = 0
+movedelaymin = 0
+
+[node name="Borders" type="Node2D" parent="."]
+
+[node name="Ground" type="StaticBody2D" parent="Borders"]
+position = Vector2(0, 1072)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Ground"]
+shape = SubResource("WorldBoundaryShape2D_c0pn0")
+
+[node name="Sprite2D" type="Sprite2D" parent="Borders/Ground"]
+visible = false
+position = Vector2(0, 5)
+scale = Vector2(1152, 10)
+texture = SubResource("PlaceholderTexture2D_j1sx0")
+
+[node name="Ceiling" type="StaticBody2D" parent="Borders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Ceiling"]
+shape = SubResource("WorldBoundaryShape2D_1ylnl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Borders/Ceiling"]
+visible = false
+position = Vector2(0, 5)
+scale = Vector2(1152, 10)
+texture = SubResource("PlaceholderTexture2D_j1sx0")
+
+[node name="Left" type="StaticBody2D" parent="Borders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Left"]
+shape = SubResource("WorldBoundaryShape2D_5ynbh")
+
+[node name="Sprite2D" type="Sprite2D" parent="Borders/Left"]
+visible = false
+position = Vector2(0, 5)
+scale = Vector2(1152, 10)
+texture = SubResource("PlaceholderTexture2D_j1sx0")
+
+[node name="Zones" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("7_3pskv")
+player = NodePath("../Player")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Zones"]
+
+[node name="Label" type="Label" parent="Zones/CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "TEXT"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Zones"]
+
+[node name="Background" type="ParallaxLayer" parent="Zones/ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+
+[node name="City" type="Sprite2D" parent="Zones/ParallaxBackground/Background"]
+position = Vector2(9.53674e-07, 2.18279e-11)
+scale = Vector2(0.554764, 0.448645)
+texture = ExtResource("8_m74jp")
+centered = false
+
+[node name="OceanFloor" type="Sprite2D" parent="Zones/ParallaxBackground/Background"]
+z_index = -20
+position = Vector2(1928, -540)
+texture = ExtResource("9_heu7a")
+centered = false
+
+[node name="KelpForest" type="Sprite2D" parent="Zones/ParallaxBackground/Background"]
+modulate = Color(0.278357, 1, 0.512521, 1)
+z_index = -20
+position = Vector2(5768, -552)
+texture = ExtResource("9_heu7a")
+centered = false
+
+[node name="PoppedCity" type="Sprite2D" parent="Zones/ParallaxBackground/Background"]
+modulate = Color(0.839373, 0.311916, 0.471622, 1)
+position = Vector2(9608, 2.18279e-11)
+scale = Vector2(0.554764, 0.448645)
+texture = ExtResource("8_m74jp")
+centered = false
+
+[node name="ToxicDump" type="Sprite2D" parent="Zones/ParallaxBackground/Background"]
+modulate = Color(0.717141, 0.389214, 0.0271939, 1)
+z_index = -20
+position = Vector2(11552, -540)
+texture = ExtResource("9_heu7a")
+centered = false
+
+[node name="ToxicDump2" type="Sprite2D" parent="Zones/ParallaxBackground/Background/ToxicDump"]
+modulate = Color(0.753984, 0.753984, 0.753984, 1)
+z_index = -20
+position = Vector2(3840, 0)
+texture = ExtResource("9_heu7a")
+centered = false
+
+[node name="Foreground" type="ParallaxLayer" parent="Zones/ParallaxBackground"]
+motion_scale = Vector2(0.75, 0.75)
+motion_mirroring = Vector2(5760, 0)
+
+[node name="OceanFloor" type="Sprite2D" parent="Zones/ParallaxBackground/Foreground"]
+texture = ExtResource("10_47cm1")
+centered = false
+
+[node name="ParallaxForeground" type="ParallaxBackground" parent="Zones"]
+layer = 99
+
+[node name="OceanMid" type="ParallaxLayer" parent="Zones/ParallaxForeground"]
+motion_scale = Vector2(2, 2)
+
+[node name="foreground" type="Sprite2D" parent="Zones/ParallaxForeground/OceanMid"]
+modulate = Color(0.541968, 0.431687, 0.245833, 1)
+position = Vector2(0, 152)
+texture = ExtResource("10_47cm1")
+centered = false
+
+[node name="City" type="Node2D" parent="Zones" groups=["Zones"]]
+scale = Vector2(0.5, 0.5)
+
+[node name="Ocean Floor" type="Node2D" parent="Zones" groups=["Zones"]]
+position = Vector2(2876, 0)
+scale = Vector2(0.5, 0.5)
+
+[node name="Kelp Forest" type="Node2D" parent="Zones" groups=["Zones"]]
+position = Vector2(10500, 0)
+scale = Vector2(0.5, 0.5)
+
+[node name="Popped Town" type="Node2D" parent="Zones" groups=["Zones"]]
+position = Vector2(18200, 0)
+scale = Vector2(0.5, 0.5)
+
+[node name="Toxic Dump" type="Node2D" parent="Zones" groups=["Zones"]]
+position = Vector2(22210, 0)
+scale = Vector2(0.5, 0.5)
+
+[node name="Dropoff" type="Node2D" parent="Zones" groups=["Zones"]]
+position = Vector2(45200, 0)
+scale = Vector2(0.5, 0.5)
+
+[node name="Vent" type="Node2D" parent="."]
+position = Vector2(960, 1024)
+
+[node name="OxygenDispenser" parent="Vent" instance=ExtResource("11_67ouj")]
+
+[node name="Sprite2D" type="Sprite2D" parent="Vent"]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.48, 0.48)
+texture = SubResource("PlaceholderTexture2D_tbnus")
+
+[node name="Label" type="Label" parent="Vent"]
+offset_left = -24.0
+offset_top = -16.0
+offset_right = 17.0
+offset_bottom = 7.0
+text = "VENT"
+
+[node name="PipeLayer" type="Node2D" parent="."]
+script = ExtResource("12_i1hwl")
+
+[node name="Beacon3" type="Node2D" parent="PipeLayer"]
+position = Vector2(37500, 1024)
+script = ExtResource("13_kwbo7")
+
+[node name="Pipes" type="Node2D" parent="PipeLayer/Beacon3"]
+position = Vector2(-5927, 0)
+
+[node name="Pipe6" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("14_4gdr7")]
+position = Vector2(-5760, 0)
+
+[node name="Pipe8" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("14_4gdr7")]
+position = Vector2(-3840, 0)
+
+[node name="Pipe5" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("14_4gdr7")]
+position = Vector2(-1920, 0)
+
+[node name="Pipe7" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("14_4gdr7")]
+
+[node name="Pipe 8" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("14_4gdr7")]
+position = Vector2(1920, 0)
+
+[node name="p" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("14_4gdr7")]
+position = Vector2(3840, 0)
+
+[node name="BeaconArea" parent="PipeLayer/Beacon3" instance=ExtResource("15_xf1gj")]
+
+[node name="Beacon2" type="Node2D" parent="PipeLayer"]
+position = Vector2(20375, 1024)
+script = ExtResource("13_kwbo7")
+
+[node name="Pipes" type="Node2D" parent="PipeLayer/Beacon2"]
+position = Vector2(-5927, 0)
+
+[node name="Pipe6" parent="PipeLayer/Beacon2/Pipes" instance=ExtResource("14_4gdr7")]
+position = Vector2(-5760, 0)
+
+[node name="Pipe8" parent="PipeLayer/Beacon2/Pipes" instance=ExtResource("14_4gdr7")]
+position = Vector2(-3840, 0)
+
+[node name="Pipe5" parent="PipeLayer/Beacon2/Pipes" instance=ExtResource("14_4gdr7")]
+position = Vector2(-1920, 0)
+
+[node name="Pipe7" parent="PipeLayer/Beacon2/Pipes" instance=ExtResource("14_4gdr7")]
+
+[node name="Pipe 8" parent="PipeLayer/Beacon2/Pipes" instance=ExtResource("14_4gdr7")]
+position = Vector2(1920, 0)
+
+[node name="p" parent="PipeLayer/Beacon2/Pipes" instance=ExtResource("14_4gdr7")]
+position = Vector2(3840, 0)
+
+[node name="BeaconArea" parent="PipeLayer/Beacon2" instance=ExtResource("15_xf1gj")]
+
+[node name="Beacon1" type="Node2D" parent="PipeLayer"]
+position = Vector2(8688, 1024)
+script = ExtResource("13_kwbo7")
+
+[node name="Pipes" type="Node2D" parent="PipeLayer/Beacon1"]
+position = Vector2(-5760, 0)
+
+[node name="Pipe5" parent="PipeLayer/Beacon1/Pipes" instance=ExtResource("14_4gdr7")]
+position = Vector2(-1920, 0)
+
+[node name="Pipe7" parent="PipeLayer/Beacon1/Pipes" instance=ExtResource("14_4gdr7")]
+
+[node name="Pipe 8" parent="PipeLayer/Beacon1/Pipes" instance=ExtResource("14_4gdr7")]
+position = Vector2(1920, 0)
+
+[node name="p" parent="PipeLayer/Beacon1/Pipes" instance=ExtResource("14_4gdr7")]
+position = Vector2(3840, 0)
+
+[node name="BeaconArea" parent="PipeLayer/Beacon1" instance=ExtResource("15_xf1gj")]
+position = Vector2(0, 38)
+
+[node name="EventTriggers" type="Node2D" parent="."]
+script = ExtResource("16_kgv82")
+
+[node name="ScriptedEvent" type="Node2D" parent="EventTriggers"]
+script = ExtResource("17_alh8t")
+
+[connection signal="on_depleted" from="HUD/OxygenTimer" to="." method="_on_death"]
+[connection signal="on_depleted" from="HUD/HealthMeter" to="." method="_on_death"]
+[connection signal="on_beacon_placed" from="PipeLayer/Beacon3/BeaconArea" to="PipeLayer/Beacon3" method="on_beacon_placed"]
+[connection signal="on_beacon_placed" from="PipeLayer/Beacon2/BeaconArea" to="PipeLayer/Beacon2" method="on_beacon_placed"]
+[connection signal="on_beacon_placed" from="PipeLayer/Beacon1/BeaconArea" to="PipeLayer/Beacon1" method="on_beacon_placed"]
