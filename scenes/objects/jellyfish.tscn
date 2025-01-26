@@ -47,5 +47,6 @@ animations = [{
 
 [node name="jellyfish" type="AnimatedSprite2D"]
 position = Vector2(366, 587)
+rotation = 0.362394
 sprite_frames = SubResource("SpriteFrames_l7vjd")
 autoplay = "default"
