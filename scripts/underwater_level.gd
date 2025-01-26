@@ -23,3 +23,6 @@ func restart() -> void:
 	oxygen_timer.oxygen = 100
 	player.position = spawnpoint
 	
+
+func _on_beacon_set_respawn(respawn_position: Vector2) -> void:
+	spawnpoint = respawn_position

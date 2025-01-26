@@ -7,12 +7,18 @@ var visibletarget
 @export var player: CharacterBody2D
 var currentdelay = 0
 var rng = RandomNumberGenerator.new()
+@export var sprite: AnimatedSprite2D
+
+var currentdirection = 1
+var scalebase
 
 var killplayer : Signal
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	currentdelay = rng.randi_range(movedelaymin,movedelaymax)
+	scalebase = sprite.scale.x
+	
 	pass # Replace with function body.
 
 
@@ -25,7 +31,16 @@ func _process(delta: float) -> void:
 		pass
 	else:
 		currentdelay -= 1
-	pass
+	
+	#getting direction of the shark
+	if velocity.x > 0:
+		sprite.scale.x = scalebase * -1
+	elif velocity.x < 0: 
+		sprite.scale.x = scalebase
+		
+	
+		
+	
 	
 func _physics_process(delta: float) -> void:
 	if visibletarget:
