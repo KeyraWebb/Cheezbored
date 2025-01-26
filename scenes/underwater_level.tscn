@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b471jw81q2f7r"]
+[gd_scene load_steps=31 format=3 uid="uid://b471jw81q2f7r"]
 
 [ext_resource type="PackedScene" uid="uid://df6n5fnrrtxh8" path="res://scenes/objects/player.tscn" id="1_dsi1s"]
 [ext_resource type="Script" path="res://scripts/underwater_level.gd" id="1_xjn78"]
@@ -23,6 +23,8 @@
 [ext_resource type="PackedScene" uid="uid://ddaa20mcojvkh" path="res://scenes/objects/freakyman.tscn" id="20_5eulu"]
 [ext_resource type="PackedScene" uid="uid://8amkkokbu6c8" path="res://scenes/objects/tuna_fish.tscn" id="21_3osc5"]
 [ext_resource type="PackedScene" uid="uid://bm3kiaoi1lwn6" path="res://scenes/objects/cwab.tscn" id="22_qa3qo"]
+[ext_resource type="AudioStream" uid="uid://qsbtood8aowg" path="res://assets/sound/ThalassolopolisGeneral.ogg" id="24_j340n"]
+[ext_resource type="AudioStream" uid="uid://gqudsyqkfq65" path="res://assets/sound/ThalassolopolisEnd.ogg" id="25_bhgqb"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_c0pn0"]
 
@@ -666,6 +668,14 @@ scale = Vector2(0.37, 0.37)
 [node name="JellyHazard8" parent="hazards/Jellies" instance=ExtResource("4_yymqc")]
 position = Vector2(29533, 274)
 scale = Vector2(0.37, 0.37)
+
+[node name="Bg music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_j340n")
+autoplay = true
+parameters/looping = false
+
+[node name="End music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("25_bhgqb")
 
 [connection signal="on_beacon_placed" from="PipeLayer/Beacon1/BeaconArea" to="PipeLayer/Beacon1" method="on_beacon_placed"]
 [connection signal="on_beacon_placed" from="PipeLayer/Beacon2/BeaconArea" to="PipeLayer/Beacon2" method="on_beacon_placed"]
