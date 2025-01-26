@@ -1,15 +1,16 @@
-[gd_scene load_steps=18 format=3 uid="uid://b471jw81q2f7r"]
+[gd_scene load_steps=19 format=3 uid="uid://b471jw81q2f7r"]
 
 [ext_resource type="PackedScene" uid="uid://df6n5fnrrtxh8" path="res://scenes/objects/player.tscn" id="1_dsi1s"]
 [ext_resource type="PackedScene" uid="uid://cvux58ossusty" path="res://scenes/ui/oxygen_timer.tscn" id="1_r1edr"]
 [ext_resource type="Script" path="res://scripts/underwater_level.gd" id="1_xjn78"]
 [ext_resource type="Script" path="res://scripts/zones.gd" id="2_ab1qq"]
 [ext_resource type="Texture2D" uid="uid://b4wivdan60b3l" path="res://assets/sprites/backgrounds/OceanFloorRear.png" id="3_r6orm"]
-[ext_resource type="PackedScene" path="res://scenes/objects/beacon_area.tscn" id="3_rtwnx"]
+[ext_resource type="PackedScene" uid="uid://biuxyiktdjo2d" path="res://scenes/objects/beacon_area.tscn" id="3_rtwnx"]
 [ext_resource type="Texture2D" uid="uid://bfws0r5mvw126" path="res://assets/sprites/backgrounds/OceanFloorFront.png" id="4_8eb2o"]
+[ext_resource type="Texture2D" uid="uid://c0pe3262dj0h8" path="res://assets/sprites/backgrounds/WholeAssRear1.png" id="5_ci75f"]
 [ext_resource type="Texture2D" uid="uid://c5u8aug8o1qd0" path="res://assets/sprites/Setting Image temp.png" id="5_gbqkf"]
-[ext_resource type="PackedScene" path="res://scenes/objects/oxygen_dispenser.tscn" id="6_eijx3"]
-[ext_resource type="PackedScene" path="res://scenes/objects/pipe.tscn" id="7_3dd0i"]
+[ext_resource type="PackedScene" uid="uid://015qpi431l65" path="res://scenes/objects/oxygen_dispenser.tscn" id="6_eijx3"]
+[ext_resource type="PackedScene" uid="uid://dfwd1jovxn5q3" path="res://scenes/objects/pipe.tscn" id="7_3dd0i"]
 [ext_resource type="Script" path="res://scripts/beacon_manager.gd" id="9_7we8j"]
 [ext_resource type="Script" path="res://scripts/beacon.gd" id="9_yavqo"]
 
@@ -95,11 +96,11 @@ motion_scale = Vector2(0.5, 0.5)
 
 [node name="City" type="Sprite2D" parent="Zones/ParallaxBackground/Background"]
 position = Vector2(9.53674e-07, 2.18279e-11)
-scale = Vector2(0.554764, 0.448645)
-texture = ExtResource("5_gbqkf")
+texture = ExtResource("5_ci75f")
 centered = false
 
 [node name="OceanFloor" type="Sprite2D" parent="Zones/ParallaxBackground/Background"]
+visible = false
 z_index = -20
 position = Vector2(1928, -540)
 texture = ExtResource("3_r6orm")
@@ -113,6 +114,7 @@ texture = ExtResource("3_r6orm")
 centered = false
 
 [node name="PoppedCity" type="Sprite2D" parent="Zones/ParallaxBackground/Background"]
+visible = false
 modulate = Color(0.839373, 0.311916, 0.471622, 1)
 position = Vector2(9608, 2.18279e-11)
 scale = Vector2(0.554764, 0.448645)
@@ -120,6 +122,7 @@ texture = ExtResource("5_gbqkf")
 centered = false
 
 [node name="ToxicDump" type="Sprite2D" parent="Zones/ParallaxBackground/Background"]
+visible = false
 modulate = Color(0.717141, 0.389214, 0.0271939, 1)
 z_index = -20
 position = Vector2(11552, -540)
