@@ -1,20 +1,19 @@
-[gd_scene load_steps=23 format=3 uid="uid://cwy4k1eoeu66w"]
+[gd_scene load_steps=22 format=3 uid="uid://buehahwe8ucx4"]
 
 [ext_resource type="Script" path="res://scripts/underwater_level.gd" id="1_wfyxf"]
 [ext_resource type="Script" path="res://scripts/oxygen_timer.gd" id="2_8v6s3"]
 [ext_resource type="Theme" uid="uid://xmw5s6ytlo3k" path="res://assets/fonts/basetext.tres" id="3_3neko"]
 [ext_resource type="Script" path="res://scripts/health_meter.gd" id="4_ovsfn"]
 [ext_resource type="PackedScene" uid="uid://df6n5fnrrtxh8" path="res://scenes/objects/player.tscn" id="5_gioyf"]
-[ext_resource type="PackedScene" path="res://scenes/objects/jelly_hazard.tscn" id="6_62124"]
 [ext_resource type="Script" path="res://scripts/zones.gd" id="7_3pskv"]
 [ext_resource type="Texture2D" uid="uid://c5u8aug8o1qd0" path="res://assets/sprites/Setting Image temp.png" id="8_m74jp"]
 [ext_resource type="Texture2D" uid="uid://b4wivdan60b3l" path="res://assets/sprites/backgrounds/OceanFloorRear.png" id="9_heu7a"]
 [ext_resource type="Texture2D" uid="uid://bfws0r5mvw126" path="res://assets/sprites/backgrounds/OceanFloorFront.png" id="10_47cm1"]
-[ext_resource type="PackedScene" uid="uid://015qpi431l65" path="res://scenes/objects/oxygen_dispenser.tscn" id="11_67ouj"]
+[ext_resource type="PackedScene" path="res://scenes/objects/oxygen_dispenser.tscn" id="11_67ouj"]
 [ext_resource type="Script" path="res://scripts/beacon_manager.gd" id="12_i1hwl"]
 [ext_resource type="Script" path="res://scripts/beacon.gd" id="13_kwbo7"]
-[ext_resource type="PackedScene" uid="uid://dfwd1jovxn5q3" path="res://scenes/objects/pipe.tscn" id="14_4gdr7"]
-[ext_resource type="PackedScene" uid="uid://biuxyiktdjo2d" path="res://scenes/objects/beacon_area.tscn" id="15_xf1gj"]
+[ext_resource type="PackedScene" path="res://scenes/objects/pipe.tscn" id="14_4gdr7"]
+[ext_resource type="PackedScene" uid="uid://c12ggw0ndr0e7" path="res://scenes/objects/beacon_area.tscn" id="15_xf1gj"]
 [ext_resource type="Script" path="res://scripts/event_triggers.gd" id="16_kgv82"]
 [ext_resource type="Script" path="res://scripts/scripted_event.gd" id="17_alh8t"]
 
@@ -31,7 +30,7 @@ normal = Vector2(1, 0)
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tbnus"]
 size = Vector2(200, 200)
 
-[node name="UnderwaterLevel" type="Node2D"]
+[node name="UnderwaterLevel2" type="Node2D"]
 script = ExtResource("1_wfyxf")
 
 [node name="HUD" type="CanvasLayer" parent="."]
@@ -96,14 +95,6 @@ horizontal_alignment = 2
 position = Vector2(960, 1024)
 walk_speed = 900.0
 swim_speed = 2500.0
-
-[node name="Creatures" type="Node2D" parent="."]
-position = Vector2(1399, 535)
-
-[node name="Jellies" type="Node2D" parent="Creatures"]
-
-[node name="JellyHazard" parent="Creatures/Jellies" instance=ExtResource("6_62124")]
-position = Vector2(0, 0)
 
 [node name="Borders" type="Node2D" parent="."]
 
