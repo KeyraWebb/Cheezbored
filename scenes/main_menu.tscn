@@ -1,10 +1,50 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhbve28s5tl6q"]
+[gd_scene load_steps=11 format=3 uid="uid://bhbve28s5tl6q"]
 
 [ext_resource type="Theme" uid="uid://xmw5s6ytlo3k" path="res://assets/fonts/basetext.tres" id="1_2mm8i"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_8e512"]
 [ext_resource type="Script" path="res://scripts/quitbutton.gd" id="2_2elgg"]
-[ext_resource type="Texture2D" uid="uid://cg38o126ofoir" path="res://assets/sprites/backgrounds/Thalassolopolis Intro.png" id="4_rtch0"]
+[ext_resource type="Texture2D" uid="uid://duytdbs0pc7pa" path="res://assets/sprites/backgrounds/Intro_Image_Thalassolopolis_No_Diver.png" id="4_demgl"]
 [ext_resource type="AudioStream" uid="uid://dyx3g0ycurday" path="res://assets/sound/ThalassalopolisTheme.ogg" id="5_ojamk"]
+[ext_resource type="Texture2D" uid="uid://cbwd886rebspn" path="res://assets/sprites/backgrounds/Intro_Image_Thalassolopolis_No_Diver_Overlay.png" id="6_vmgd5"]
+[ext_resource type="Texture2D" uid="uid://duavc8povt3au" path="res://assets/sprites/backgrounds/Intro_Image_Thalassolopolis_Diver.png" id="7_afjhg"]
+
+[sub_resource type="Animation" id="Animation_ba702"]
+resource_name = "diverbobbing"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 2.5, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 70), Vector2(0.639, 60), Vector2(2.528, 40), Vector2(2.528, 30), Vector2(0, -16)]
+}
+
+[sub_resource type="Animation" id="Animation_8vx8f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 91)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dbl8h"]
+_data = {
+"RESET": SubResource("Animation_8vx8f"),
+"diverbobbing": SubResource("Animation_ba702")
+}
 
 [node name="main menu" type="Control"]
 layout_mode = 3
@@ -47,11 +87,6 @@ theme_override_font_sizes/font_size = 30
 text = "Quit"
 script = ExtResource("2_2elgg")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -10
-position = Vector2(960, 540)
-texture = ExtResource("4_rtch0")
-
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -69,9 +104,34 @@ theme = ExtResource("1_2mm8i")
 theme_override_font_sizes/font_size = 100
 text = "Thalassalopolis"
 
+[node name="background" type="Sprite2D" parent="."]
+z_index = -10
+position = Vector2(960, 540)
+texture = ExtResource("4_demgl")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_ojamk")
 autoplay = true
 parameters/looping = true
+
+[node name="overlay" type="Sprite2D" parent="."]
+modulate = Color(0.72, 0.72, 0.72, 0.658824)
+z_index = -5
+position = Vector2(960, 540)
+texture = ExtResource("6_vmgd5")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+z_index = -8
+position = Vector2(0, 91)
+
+[node name="diver" type="Sprite2D" parent="AnimatableBody2D"]
+position = Vector2(960, 540)
+texture = ExtResource("7_afjhg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody2D"]
+libraries = {
+"": SubResource("AnimationLibrary_dbl8h")
+}
+autoplay = "diverbobbing"
 
 [connection signal="pressed" from="play button" to="." method="_on_play_button_pressed"]
