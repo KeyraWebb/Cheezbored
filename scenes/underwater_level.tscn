@@ -1,12 +1,14 @@
-[gd_scene load_steps=22 format=3 uid="uid://b471jw81q2f7r"]
+[gd_scene load_steps=24 format=3 uid="uid://b471jw81q2f7r"]
 
 [ext_resource type="PackedScene" uid="uid://df6n5fnrrtxh8" path="res://scenes/objects/player.tscn" id="1_dsi1s"]
-[ext_resource type="PackedScene" uid="uid://cvux58ossusty" path="res://scenes/ui/oxygen_timer.tscn" id="1_r1edr"]
 [ext_resource type="Script" path="res://scripts/underwater_level.gd" id="1_xjn78"]
 [ext_resource type="Script" path="res://scripts/zones.gd" id="2_ab1qq"]
+[ext_resource type="Script" path="res://scripts/oxygen_timer.gd" id="2_pas6x"]
+[ext_resource type="Script" path="res://scripts/health_meter.gd" id="3_47vo4"]
 [ext_resource type="Texture2D" uid="uid://b4wivdan60b3l" path="res://assets/sprites/backgrounds/OceanFloorRear.png" id="3_r6orm"]
 [ext_resource type="PackedScene" uid="uid://biuxyiktdjo2d" path="res://scenes/objects/beacon_area.tscn" id="3_rtwnx"]
 [ext_resource type="Texture2D" uid="uid://bfws0r5mvw126" path="res://assets/sprites/backgrounds/OceanFloorFront.png" id="4_8eb2o"]
+[ext_resource type="Theme" uid="uid://xmw5s6ytlo3k" path="res://assets/fonts/basetext.tres" id="4_m5qyd"]
 [ext_resource type="Texture2D" uid="uid://c0pe3262dj0h8" path="res://assets/sprites/backgrounds/WholeAssRear1.png" id="5_ci75f"]
 [ext_resource type="Texture2D" uid="uid://c5u8aug8o1qd0" path="res://assets/sprites/Setting Image temp.png" id="5_gbqkf"]
 [ext_resource type="PackedScene" uid="uid://015qpi431l65" path="res://scenes/objects/oxygen_dispenser.tscn" id="6_eijx3"]
@@ -35,10 +37,61 @@ script = ExtResource("1_xjn78")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="OxygenTimer" parent="HUD" instance=ExtResource("1_r1edr")]
+[node name="HealthMeter" type="Control" parent="HUD" node_paths=PackedStringArray("display")]
 unique_name_in_owner = true
-deplete_delay = 52
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_47vo4")
+display = NodePath("Display")
 metadata/_edit_use_anchors_ = true
+
+[node name="Display" type="Label" parent="HUD/HealthMeter"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -280.0
+offset_top = 20.0
+offset_right = -18.0
+offset_bottom = 75.0
+grow_horizontal = 0
+theme = ExtResource("4_m5qyd")
+theme_override_font_sizes/font_size = 30
+text = "Health: 100%"
+horizontal_alignment = 2
+
+[node name="OxygenTimer" type="Control" parent="HUD" node_paths=PackedStringArray("oxygen_display")]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_pas6x")
+deplete_delay = 52
+oxygen_display = NodePath("OxygenDisplay")
+low_oxygen_color = Color(1, 0.29, 0.29, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="OxygenDisplay" type="Label" parent="HUD/OxygenTimer"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -280.0
+offset_top = 65.0
+offset_right = -18.0
+offset_bottom = 120.0
+grow_horizontal = 0
+theme = ExtResource("4_m5qyd")
+theme_override_font_sizes/font_size = 30
+text = "Oxygen: 100%"
+horizontal_alignment = 2
 
 [node name="Player" parent="." instance=ExtResource("1_dsi1s")]
 position = Vector2(960, 1024)
@@ -288,7 +341,6 @@ position = Vector2(3840, 0)
 
 [node name="Node" type="Node" parent="PipeLayer"]
 
-[connection signal="on_depleted" from="HUD/OxygenTimer" to="." method="_on_death"]
 [connection signal="on_beacon_placed" from="PipeLayer/Beacon1/BeaconArea" to="PipeLayer/Beacon1" method="on_beacon_placed"]
 [connection signal="on_beacon_placed" from="PipeLayer/Beacon2/BeaconArea" to="PipeLayer/Beacon2" method="on_beacon_placed"]
 [connection signal="on_beacon_placed" from="PipeLayer/Beacon3/BeaconArea" to="PipeLayer/Beacon3" method="on_beacon_placed"]
