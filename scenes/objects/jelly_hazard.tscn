@@ -1,0 +1,89 @@
+[gd_scene load_steps=11 format=3 uid="uid://beiqc86478ixd"]
+
+[ext_resource type="Script" path="res://scripts/jelly_hazard.gd" id="1_whhwn"]
+[ext_resource type="Texture2D" uid="uid://dtxjbtwx02yi" path="res://assets/sprites/spritesheets/JellyFish.png" id="2_kgcmr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dj4vi"]
+radius = 51.6
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_msvdw"]
+atlas = ExtResource("2_kgcmr")
+region = Rect2(0, 0, 302, 514)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byakr"]
+atlas = ExtResource("2_kgcmr")
+region = Rect2(302, 0, 302, 514)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lgcr"]
+atlas = ExtResource("2_kgcmr")
+region = Rect2(604, 0, 302, 514)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l55ff"]
+atlas = ExtResource("2_kgcmr")
+region = Rect2(0, 514, 302, 514)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_maffc"]
+atlas = ExtResource("2_kgcmr")
+region = Rect2(302, 514, 302, 514)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l7vjd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_msvdw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byakr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lgcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l55ff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_maffc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6sw47"]
+radius = 75.6439
+height = 363.114
+
+[node name="JellyHazard" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+position = Vector2(1399, 535)
+collision_layer = 4
+motion_mode = 1
+script = ExtResource("1_whhwn")
+movespeed = 40
+sprite = NodePath("Sprite")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(52, -124)
+shape = SubResource("CircleShape2D_dj4vi")
+
+[node name="Sprite" type="Node2D" parent="."]
+
+[node name="jellyfish" type="AnimatedSprite2D" parent="Sprite"]
+rotation = 0.362394
+sprite_frames = SubResource("SpriteFrames_l7vjd")
+autoplay = "default"
+
+[node name="Killzone" type="Area2D" parent="Sprite/jellyfish"]
+rotation = 0.138354
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/jellyfish/Killzone"]
+position = Vector2(0.480082, 0.877224)
+rotation = -0.101804
+shape = SubResource("CapsuleShape2D_6sw47")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.826
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="Sprite/jellyfish/Killzone" to="." method="_on_killzone_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

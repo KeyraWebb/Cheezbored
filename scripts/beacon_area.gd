@@ -1,10 +1,20 @@
+@tool
 extends Area2D
 
 @export var tooltip: Control
 
+@export_range(0, 1) var sprite_version: int:
+	set(value):
+		sprite_version = value
+		var sprites := [$"BubbleVent 1", $"BubbleVent 2"]
+		for i in range(sprites.size()):
+			print(i)
+			sprites[i].visible = i == sprite_version
+
 var player_is_near := false
 
 signal on_beacon_placed
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
