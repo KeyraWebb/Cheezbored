@@ -13,8 +13,7 @@ script = ExtResource("1_m87va")
 [node name="bubble" parent="." instance=ExtResource("2_xom3o")]
 position = Vector2(0, -100)
 scale = Vector2(0.165, 0.165)
-autoplay = "default"
-frame_progress = 0.722984
+frame_progress = 0.205932
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7dq54")
