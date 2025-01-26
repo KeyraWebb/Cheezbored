@@ -1,9 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://du2vkhnifvd7l"]
+[gd_scene load_steps=5 format=3 uid="uid://du2vkhnifvd7l"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7wbg4"]
 [ext_resource type="PackedScene" uid="uid://bhbve28s5tl6q" path="res://scenes/main_menu.tscn" id="2_cql07"]
-[ext_resource type="PackedScene" path="res://scenes/death_screen.tscn" id="3_fsppi"]
-[ext_resource type="PackedScene" uid="uid://b471jw81q2f7r" path="res://scenes/underwater_level.tscn" id="4_8u83u"]
+[ext_resource type="PackedScene" uid="uid://mampn2uxmi73" path="res://scenes/death_screen.tscn" id="3_fsppi"]
+[ext_resource type="PackedScene" uid="uid://b471jw81q2f7r" path="res://scenes/underwater_level.tscn" id="4_0wv4o"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_7wbg4")
@@ -16,17 +16,7 @@ visible = false
 [node name="RespawnTimer" type="Timer" parent="DeathScreen"]
 one_shot = true
 
-[node name="UnderwaterLevel" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-script = null
+[node name="UnderwaterLevel" parent="." instance=ExtResource("4_0wv4o")]
 
 [connection signal="on_play_pressed" from="main menu" to="." method="_on_menu_play_pressed"]
 [connection signal="timeout" from="DeathScreen/RespawnTimer" to="." method="_on_respawn_timer_timeout"]
