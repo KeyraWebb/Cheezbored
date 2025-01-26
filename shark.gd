@@ -13,11 +13,18 @@ var movedirection: Vector2
 @export var movelengthmax: int
 @export var movelengthmin: int
 
+@export var sprite: AnimatedSprite2D
+
+var currentdirection = 1
+var scalebase
+
 var killplayer : Signal
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	currentdelay = rng.randi_range(movedelaymin,movedelaymax)
+	scalebase = sprite.scale.x
+	
 	pass # Replace with function body.
 
 
@@ -33,10 +40,13 @@ func _process(delta: float) -> void:
 		movetimer -= 1
 	else:
 		currentdelay -= 1
-	
-	print(currentdelay)
-	print(movetimer)
-	
+
+	#getting direction of the shark
+	if velocity.x > 0:
+		sprite.scale.x = scalebase * -1
+	elif velocity.x < 0: 
+		sprite.scale.x = scalebase
+		
 func _physics_process(delta: float) -> void:
 	if visibletarget:
 		chase_player(delta)

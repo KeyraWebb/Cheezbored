@@ -1,0 +1,66 @@
+[gd_scene load_steps=12 format=3 uid="uid://c0gid80v0leaa"]
+
+[ext_resource type="PackedScene" uid="uid://df6n5fnrrtxh8" path="res://scenes/objects/player.tscn" id="1_fd84c"]
+[ext_resource type="Script" path="res://scripts/beacon_area.gd" id="2_layvb"]
+[ext_resource type="Texture2D" uid="uid://cgd2ekpq1u484" path="res://icon.svg" id="2_r61nq"]
+[ext_resource type="PackedScene" path="res://scenes/ui/tooltip.tscn" id="4_ultpx"]
+[ext_resource type="PackedScene" path="res://scenes/objects/huge_man.tscn" id="5_vgrs3"]
+[ext_resource type="PackedScene" path="res://scenes/objects/shark.tscn" id="6_jr3ct"]
+[ext_resource type="PackedScene" uid="uid://cvux58ossusty" path="res://scenes/ui/oxygen_timer.tscn" id="7_l6yig"]
+[ext_resource type="PackedScene" path="res://scenes/objects/jellyfish.tscn" id="8_iv8lr"]
+[ext_resource type="PackedScene" path="res://scenes/objects/seaweed.tscn" id="9_emq42"]
+[ext_resource type="PackedScene" path="res://scenes/objects/tuna_fish.tscn" id="10_usbi5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hcre"]
+size = Vector2(99.5, 129)
+
+[node name="BeaconTest" type="Node2D"]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="OxygenTimer" parent="HUD" instance=ExtResource("7_l6yig")]
+unique_name_in_owner = true
+deplete_delay = 40
+metadata/_edit_use_anchors_ = true
+
+[node name="Player" parent="." instance=ExtResource("1_fd84c")]
+position = Vector2(912, 568)
+walk_speed = null
+jump_velocity = null
+swim_speed = null
+
+[node name="BeaconArea" type="Area2D" parent="." node_paths=PackedStringArray("tooltip")]
+visible = false
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_layvb")
+tooltip = NodePath("tooltip")
+
+[node name="Sprite2D" type="Sprite2D" parent="BeaconArea"]
+position = Vector2(292, -123)
+texture = ExtResource("2_r61nq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BeaconArea"]
+position = Vector2(294.25, -124.5)
+shape = SubResource("RectangleShape2D_7hcre")
+
+[node name="tooltip" parent="BeaconArea" instance=ExtResource("4_ultpx")]
+offset_left = 55.0
+offset_top = -58.0
+offset_right = 95.0
+offset_bottom = -18.0
+
+[node name="HugeMan" parent="." instance=ExtResource("5_vgrs3")]
+visible = false
+
+[node name="shark" parent="." instance=ExtResource("6_jr3ct")]
+position = Vector2(1456, 520)
+
+[node name="jellyfish" parent="." instance=ExtResource("8_iv8lr")]
+
+[node name="seaweed" parent="." instance=ExtResource("9_emq42")]
+
+[node name="TunaFish" parent="." instance=ExtResource("10_usbi5")]
+
+[connection signal="area_entered" from="BeaconArea" to="BeaconArea" method="_on_area_entered"]
+[connection signal="area_exited" from="BeaconArea" to="BeaconArea" method="_on_area_exited"]

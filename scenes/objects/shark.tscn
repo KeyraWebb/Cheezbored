@@ -65,10 +65,11 @@ height = 272.977
 radius = 24.1207
 height = 255.969
 
-[node name="shark" type="CharacterBody2D"]
+[node name="shark" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 position = Vector2(368, -416)
 script = ExtResource("1_qmmix")
 movespeed = 50
+sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
