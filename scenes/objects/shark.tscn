@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://b20e8kh6v6fc0"]
 
-[ext_resource type="Script" path="res://shark.gd" id="1_qmmix"]
+[ext_resource type="Script" path="res://scripts/shark.gd" id="1_qmmix"]
 [ext_resource type="Texture2D" uid="uid://4vg3jy1b2i0k" path="res://assets/sprites/spritesheets/SharkSwim.png" id="2_l4gbx"]
 [ext_resource type="Texture2D" uid="uid://cgd2ekpq1u484" path="res://icon.svg" id="2_xqthd"]
 
@@ -68,7 +68,11 @@ height = 255.969
 [node name="shark" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 position = Vector2(368, -416)
 script = ExtResource("1_qmmix")
+movedelaymax = 100
+movedelaymin = 20
 movespeed = 50
+movelengthmax = 50
+movelengthmin = 25
 sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
