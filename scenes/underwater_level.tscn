@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b471jw81q2f7r"]
+[gd_scene load_steps=22 format=3 uid="uid://b471jw81q2f7r"]
 
 [ext_resource type="PackedScene" uid="uid://df6n5fnrrtxh8" path="res://scenes/objects/player.tscn" id="1_dsi1s"]
 [ext_resource type="PackedScene" uid="uid://cvux58ossusty" path="res://scenes/ui/oxygen_timer.tscn" id="1_r1edr"]
@@ -12,8 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://015qpi431l65" path="res://scenes/objects/oxygen_dispenser.tscn" id="6_eijx3"]
 [ext_resource type="PackedScene" uid="uid://dfwd1jovxn5q3" path="res://scenes/objects/pipe.tscn" id="7_3dd0i"]
 [ext_resource type="Texture2D" uid="uid://peodg6eigb80" path="res://assets/sprites/backgrounds/WholeAssFront1.png" id="8_1uygw"]
+[ext_resource type="Texture2D" uid="uid://b83pfjb8ybekb" path="res://assets/sprites/backgrounds/WholeAssRear2.png" id="8_mhw2f"]
 [ext_resource type="Script" path="res://scripts/beacon_manager.gd" id="9_7we8j"]
 [ext_resource type="Script" path="res://scripts/beacon.gd" id="9_yavqo"]
+[ext_resource type="Texture2D" uid="uid://dnhsxxbk0y52t" path="res://assets/sprites/backgrounds/WholeAssFront2.png" id="10_yy0y4"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_c0pn0"]
 
@@ -95,7 +97,7 @@ text = "TEXT"
 [node name="Background" type="ParallaxLayer" parent="Zones/ParallaxBackground"]
 motion_scale = Vector2(0.5, 0.5)
 
-[node name="City" type="Sprite2D" parent="Zones/ParallaxBackground/Background"]
+[node name="background left" type="Sprite2D" parent="Zones/ParallaxBackground/Background"]
 position = Vector2(9.53674e-07, 2.18279e-11)
 texture = ExtResource("5_ci75f")
 centered = false
@@ -138,13 +140,22 @@ position = Vector2(3840, 0)
 texture = ExtResource("3_r6orm")
 centered = false
 
+[node name="background right" type="Sprite2D" parent="Zones/ParallaxBackground/Background"]
+position = Vector2(8639, 2.18279e-11)
+texture = ExtResource("8_mhw2f")
+centered = false
+
 [node name="Foreground" type="ParallaxLayer" parent="Zones/ParallaxBackground"]
 motion_scale = Vector2(0.75, 0.75)
 
 [node name="OceanFloor" type="Sprite2D" parent="Zones/ParallaxBackground/Foreground"]
 position = Vector2(2, 0)
-scale = Vector2(1.34, 1.34)
 texture = ExtResource("8_1uygw")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Zones/ParallaxBackground/Foreground"]
+position = Vector2(12377, -1)
+texture = ExtResource("10_yy0y4")
 centered = false
 
 [node name="ParallaxForeground" type="ParallaxBackground" parent="Zones"]

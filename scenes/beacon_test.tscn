@@ -83,7 +83,6 @@ autoplay = "default"
 
 [node name="bubble" parent="." instance=ExtResource("12_yqtwo")]
 visible = false
-autoplay = "default"
 
 [node name="cwab" parent="." instance=ExtResource("13_bflyu")]
 autoplay = "default"
