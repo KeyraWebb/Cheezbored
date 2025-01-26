@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnmdfkft1o87r"]
+
+[ext_resource type="Texture2D" uid="uid://bmp60ohumsk6q" path="res://assets/sprites/backgrounds/End.png" id="1_h8sf3"]
+[ext_resource type="Theme" uid="uid://xmw5s6ytlo3k" path="res://assets/fonts/basetext.tres" id="2_f7ej7"]
+[ext_resource type="PackedScene" uid="uid://b276v4d8gbchp" path="res://scenes/endscene.tscn" id="3_dbv5i"]
+[ext_resource type="Script" path="res://scripts/quitbutton.gd" id="4_hpajk"]
+[ext_resource type="AudioStream" uid="uid://gqudsyqkfq65" path="res://assets/sound/ThalassolopolisEnd.ogg" id="5_gvpac"]
+
+[node name="End card" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_h8sf3")
+centered = false
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = -146.0
+offset_right = 847.0
+offset_bottom = -55.0
+grow_vertical = 0
+theme = ExtResource("2_f7ej7")
+theme_override_font_sizes/font_size = 50
+text = "Thank you for playing!"
+
+[node name="Endscene" parent="." instance=ExtResource("3_dbv5i")]
+autoplay = "default"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -381.0
+offset_top = -161.0
+offset_right = -81.0
+offset_bottom = -61.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_f7ej7")
+theme_override_font_sizes/font_size = 30
+text = "Quit"
+script = ExtResource("4_hpajk")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_gvpac")
+autoplay = true

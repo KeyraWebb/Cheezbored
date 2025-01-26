@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b2ipms3d14nx"]
+[gd_scene load_steps=16 format=3 uid="uid://b2ipms3d14nx"]
 
 [ext_resource type="PackedScene" uid="uid://df6n5fnrrtxh8" path="res://scenes/objects/player.tscn" id="1_fd84c"]
 [ext_resource type="Script" path="res://scripts/beacon_area.gd" id="2_layvb"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ddaa20mcojvkh" path="res://scenes/objects/freakyman.tscn" id="11_d7y2w"]
 [ext_resource type="PackedScene" uid="uid://bafi0d2fcsgk3" path="res://scenes/objects/bubble.tscn" id="12_yqtwo"]
 [ext_resource type="PackedScene" uid="uid://bm3kiaoi1lwn6" path="res://scenes/objects/cwab.tscn" id="13_bflyu"]
+[ext_resource type="PackedScene" uid="uid://b276v4d8gbchp" path="res://scenes/endscene.tscn" id="14_1ccs1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hcre"]
 size = Vector2(99.5, 129)
@@ -79,15 +80,18 @@ visible = false
 
 [node name="freakyman" parent="." instance=ExtResource("11_d7y2w")]
 visible = false
-autoplay = "default"
 
 [node name="bubble" parent="." instance=ExtResource("12_yqtwo")]
 visible = false
 
 [node name="cwab" parent="." instance=ExtResource("13_bflyu")]
+visible = false
 autoplay = "default"
 frame = 3
 frame_progress = 0.870258
+
+[node name="Endscene" parent="." instance=ExtResource("14_1ccs1")]
+autoplay = "default"
 
 [connection signal="area_entered" from="BeaconArea" to="BeaconArea" method="_on_area_entered"]
 [connection signal="area_exited" from="BeaconArea" to="BeaconArea" method="_on_area_exited"]

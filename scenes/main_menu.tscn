@@ -8,6 +8,21 @@
 [ext_resource type="Texture2D" uid="uid://cbwd886rebspn" path="res://assets/sprites/backgrounds/Intro_Image_Thalassolopolis_No_Diver_Overlay.png" id="6_vmgd5"]
 [ext_resource type="Texture2D" uid="uid://duavc8povt3au" path="res://assets/sprites/backgrounds/Intro_Image_Thalassolopolis_Diver.png" id="7_afjhg"]
 
+[sub_resource type="Animation" id="Animation_8vx8f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 91)]
+}
+
 [sub_resource type="Animation" id="Animation_ba702"]
 resource_name = "diverbobbing"
 length = 3.0
@@ -23,21 +38,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 70), Vector2(0.639, 60), Vector2(2.528, 40), Vector2(2.528, 30), Vector2(0, -16)]
-}
-
-[sub_resource type="Animation" id="Animation_8vx8f"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 91)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dbl8h"]
