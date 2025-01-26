@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfwd1jovxn5q3"]
+[gd_scene load_steps=4 format=3 uid="uid://dfwd1jovxn5q3"]
 
 [ext_resource type="PackedScene" uid="uid://015qpi431l65" path="res://scenes/objects/oxygen_dispenser.tscn" id="1_wayvw"]
+[ext_resource type="Texture2D" uid="uid://cseiyk1lo0id0" path="res://assets/sprites/pipe.png" id="2_21fbt"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tbnus"]
 size = Vector2(300, 200)
@@ -8,18 +9,21 @@ size = Vector2(300, 200)
 [node name="Pipe" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(8.7598e-06, 0.987175, 0.559455, 1)
 position = Vector2(960, 9.09495e-13)
 scale = Vector2(6.4, 0.12)
 texture = SubResource("PlaceholderTexture2D_tbnus")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(8.7598e-06, 0.987175, 0.559455, 1)
 position = Vector2(-4.19617e-05, 1.00136e-05)
 scale = Vector2(0.0399996, 0.200001)
 texture = SubResource("PlaceholderTexture2D_tbnus")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = 24.0
 offset_top = -8.0
 offset_right = 65.0
@@ -28,3 +32,111 @@ text = "PIPE"
 
 [node name="OxygenDispenser" parent="." instance=ExtResource("1_wayvw")]
 position = Vector2(1920, 0)
+
+[node name="sprite group" type="Node2D" parent="."]
+scale = Vector2(1.065, 1.065)
+
+[node name="Sprite2D" type="Sprite2D" parent="sprite group"]
+position = Vector2(40, 3)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_21fbt")
+
+[node name="Sprite2D2" type="Sprite2D" parent="sprite group"]
+position = Vector2(126, 3)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_21fbt")
+
+[node name="Sprite2D3" type="Sprite2D" parent="sprite group"]
+position = Vector2(212, 3)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_21fbt")
+
+[node name="Sprite2D4" type="Sprite2D" parent="sprite group"]
+position = Vector2(298, 3)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_21fbt")
+
+[node name="Sprite2D5" type="Sprite2D" parent="sprite group"]
+position = Vector2(384, 3)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_21fbt")
+
+[node name="Sprite2D6" type="Sprite2D" parent="sprite group"]
+position = Vector2(470, 3)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_21fbt")
+
+[node name="Sprite2D7" type="Sprite2D" parent="sprite group"]
+position = Vector2(556, 3)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_21fbt")
+
+[node name="Sprite2D8" type="Sprite2D" parent="sprite group"]
+position = Vector2(642, 3)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_21fbt")
+
+[node name="Sprite2D9" type="Sprite2D" parent="sprite group"]
+position = Vector2(728, 3)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_21fbt")
+
+[node name="Sprite2D10" type="Sprite2D" parent="sprite group"]
+position = Vector2(814, 3)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_21fbt")
+
+[node name="Sprite2D11" type="Sprite2D" parent="sprite group"]
+position = Vector2(900, 3)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_21fbt")
+
+[node name="Sprite2D12" type="Sprite2D" parent="sprite group"]
+position = Vector2(986, 3)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_21fbt")
+
+[node name="Sprite2D13" type="Sprite2D" parent="sprite group"]
+position = Vector2(1072, 3)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_21fbt")
+
+[node name="Sprite2D14" type="Sprite2D" parent="sprite group"]
+position = Vector2(1158, 3)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_21fbt")
+
+[node name="Sprite2D15" type="Sprite2D" parent="sprite group"]
+position = Vector2(1244, 3)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_21fbt")
+
+[node name="Sprite2D16" type="Sprite2D" parent="sprite group"]
+position = Vector2(1330, 3)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_21fbt")
+
+[node name="Sprite2D17" type="Sprite2D" parent="sprite group"]
+position = Vector2(1416, 3)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_21fbt")
+
+[node name="Sprite2D18" type="Sprite2D" parent="sprite group"]
+position = Vector2(1502, 3)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_21fbt")
+
+[node name="Sprite2D19" type="Sprite2D" parent="sprite group"]
+position = Vector2(1588, 3)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_21fbt")
+
+[node name="Sprite2D20" type="Sprite2D" parent="sprite group"]
+position = Vector2(1674, 3)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_21fbt")
+
+[node name="Sprite2D21" type="Sprite2D" parent="sprite group"]
+position = Vector2(1760, 3)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_21fbt")

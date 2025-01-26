@@ -1,13 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://015qpi431l65"]
+[gd_scene load_steps=5 format=3 uid="uid://015qpi431l65"]
 
 [ext_resource type="Script" path="res://scripts/oxygen_dispenser.gd" id="1_m87va"]
 [ext_resource type="PackedScene" uid="uid://dcnsaytirumkn" path="res://scenes/ui/tooltip.tscn" id="2_jf8f4"]
+[ext_resource type="PackedScene" uid="uid://bafi0d2fcsgk3" path="res://scenes/objects/bubble.tscn" id="2_xom3o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7dq54"]
 radius = 88.3629
 
 [node name="OxygenDispenser" type="Area2D"]
 script = ExtResource("1_m87va")
+
+[node name="bubble" parent="." instance=ExtResource("2_xom3o")]
+position = Vector2(0, -100)
+scale = Vector2(0.165, 0.165)
+autoplay = "default"
+frame_progress = 0.722984
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7dq54")

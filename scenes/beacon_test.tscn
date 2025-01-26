@@ -83,12 +83,11 @@ autoplay = "default"
 
 [node name="bubble" parent="." instance=ExtResource("12_yqtwo")]
 visible = false
-autoplay = "default"
 
 [node name="cwab" parent="." instance=ExtResource("13_bflyu")]
 autoplay = "default"
-frame = 1
-frame_progress = 0.458076
+frame = 3
+frame_progress = 0.870258
 
 [connection signal="area_entered" from="BeaconArea" to="BeaconArea" method="_on_area_entered"]
 [connection signal="area_exited" from="BeaconArea" to="BeaconArea" method="_on_area_exited"]

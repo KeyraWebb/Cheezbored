@@ -54,4 +54,5 @@ animations = [{
 
 [node name="bubble" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_ckoio")
+autoplay = "default"
 frame_progress = 0.0821002
