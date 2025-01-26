@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dyqulgw1wb3hp"]
+[gd_scene load_steps=18 format=3 uid="uid://buamhvhvwud4f"]
 
 [ext_resource type="Script" path="res://scripts/shark.gd" id="1_2g45j"]
 [ext_resource type="Texture2D" uid="uid://c0x55i5f7buhf" path="res://assets/sprites/spritesheets/SHark_Bite.png" id="2_r73aj"]
@@ -104,7 +104,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_hl3lq"]
 radius = 36.0139
 
-[node name="shark" type="CharacterBody2D" node_paths=PackedStringArray("player", "sprite")]
+[node name="shark" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 position = Vector2(1276, -117)
 collision_layer = 2
 collision_mask = 2
@@ -112,7 +112,6 @@ script = ExtResource("1_2g45j")
 movedelaymax = 100
 movedelaymin = 20
 movespeed = 200
-player = NodePath("")
 movelengthmax = 200
 movelengthmin = 60
 sprite = NodePath("AnimatedSprite2D")
