@@ -30,6 +30,5 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	active_controller.update(delta)
 
-
 func fill_oxygen() -> void:
 	oxygen_timer.oxygen = 100
