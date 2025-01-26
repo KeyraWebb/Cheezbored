@@ -1,15 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://bswau3t7smage"]
+[gd_scene load_steps=18 format=3 uid="uid://b471jw81q2f7r"]
 
 [ext_resource type="PackedScene" uid="uid://df6n5fnrrtxh8" path="res://scenes/objects/player.tscn" id="1_dsi1s"]
 [ext_resource type="PackedScene" uid="uid://cvux58ossusty" path="res://scenes/ui/oxygen_timer.tscn" id="1_r1edr"]
 [ext_resource type="Script" path="res://scripts/underwater_level.gd" id="1_xjn78"]
 [ext_resource type="Script" path="res://scripts/zones.gd" id="2_ab1qq"]
 [ext_resource type="Texture2D" uid="uid://b4wivdan60b3l" path="res://assets/sprites/backgrounds/OceanFloorRear.png" id="3_r6orm"]
-[ext_resource type="PackedScene" uid="uid://biuxyiktdjo2d" path="res://scenes/objects/beacon_area.tscn" id="3_rtwnx"]
+[ext_resource type="PackedScene" path="res://scenes/objects/beacon_area.tscn" id="3_rtwnx"]
 [ext_resource type="Texture2D" uid="uid://bfws0r5mvw126" path="res://assets/sprites/backgrounds/OceanFloorFront.png" id="4_8eb2o"]
-[ext_resource type="PackedScene" uid="uid://cmqbyvfy0nnwb" path="res://scenes/zones/ocean_floor.tscn" id="5_it44k"]
+[ext_resource type="Texture2D" uid="uid://c5u8aug8o1qd0" path="res://assets/sprites/Setting Image temp.png" id="5_gbqkf"]
 [ext_resource type="PackedScene" path="res://scenes/objects/oxygen_dispenser.tscn" id="6_eijx3"]
 [ext_resource type="PackedScene" path="res://scenes/objects/pipe.tscn" id="7_3dd0i"]
+[ext_resource type="Script" path="res://scripts/beacon_manager.gd" id="9_7we8j"]
 [ext_resource type="Script" path="res://scripts/beacon.gd" id="9_yavqo"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_c0pn0"]
@@ -32,13 +33,13 @@ script = ExtResource("1_xjn78")
 
 [node name="OxygenTimer" parent="HUD" instance=ExtResource("1_r1edr")]
 unique_name_in_owner = true
-deplete_delay = 40
+deplete_delay = 52
 metadata/_edit_use_anchors_ = true
 
 [node name="Player" parent="." instance=ExtResource("1_dsi1s")]
 position = Vector2(960, 1024)
 walk_speed = 900.0
-swim_speed = 600.0
+swim_speed = 2500.0
 
 [node name="Borders" type="Node2D" parent="."]
 
@@ -89,19 +90,54 @@ text = "TEXT"
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Zones"]
 
-[node name="OceanBack" type="ParallaxLayer" parent="Zones/ParallaxBackground"]
-motion_scale = Vector2(0.2, 0.2)
+[node name="Background" type="ParallaxLayer" parent="Zones/ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
 
-[node name="Background" type="Sprite2D" parent="Zones/ParallaxBackground/OceanBack"]
+[node name="City" type="Sprite2D" parent="Zones/ParallaxBackground/Background"]
+position = Vector2(9.53674e-07, 2.18279e-11)
+scale = Vector2(0.554764, 0.448645)
+texture = ExtResource("5_gbqkf")
+centered = false
+
+[node name="OceanFloor" type="Sprite2D" parent="Zones/ParallaxBackground/Background"]
 z_index = -20
-position = Vector2(0, -540)
+position = Vector2(1928, -540)
 texture = ExtResource("3_r6orm")
 centered = false
 
-[node name="OceanMid" type="ParallaxLayer" parent="Zones/ParallaxBackground"]
-motion_scale = Vector2(0.4, 0.4)
+[node name="KelpForest" type="Sprite2D" parent="Zones/ParallaxBackground/Background"]
+modulate = Color(0.278357, 1, 0.512521, 1)
+z_index = -20
+position = Vector2(5768, -552)
+texture = ExtResource("3_r6orm")
+centered = false
 
-[node name="foreground" type="Sprite2D" parent="Zones/ParallaxBackground/OceanMid"]
+[node name="PoppedCity" type="Sprite2D" parent="Zones/ParallaxBackground/Background"]
+modulate = Color(0.839373, 0.311916, 0.471622, 1)
+position = Vector2(9608, 2.18279e-11)
+scale = Vector2(0.554764, 0.448645)
+texture = ExtResource("5_gbqkf")
+centered = false
+
+[node name="ToxicDump" type="Sprite2D" parent="Zones/ParallaxBackground/Background"]
+modulate = Color(0.717141, 0.389214, 0.0271939, 1)
+z_index = -20
+position = Vector2(11552, -540)
+texture = ExtResource("3_r6orm")
+centered = false
+
+[node name="ToxicDump2" type="Sprite2D" parent="Zones/ParallaxBackground/Background/ToxicDump"]
+modulate = Color(0.753984, 0.753984, 0.753984, 1)
+z_index = -20
+position = Vector2(3840, 0)
+texture = ExtResource("3_r6orm")
+centered = false
+
+[node name="Foreground" type="ParallaxLayer" parent="Zones/ParallaxBackground"]
+motion_scale = Vector2(0.75, 0.75)
+motion_mirroring = Vector2(5760, 0)
+
+[node name="OceanFloor" type="Sprite2D" parent="Zones/ParallaxBackground/Foreground"]
 texture = ExtResource("4_8eb2o")
 centered = false
 
@@ -117,22 +153,31 @@ position = Vector2(0, 152)
 texture = ExtResource("4_8eb2o")
 centered = false
 
-[node name="Ocean Floor" parent="Zones" instance=ExtResource("5_it44k")]
+[node name="City" type="Node2D" parent="Zones" groups=["Zones"]]
+scale = Vector2(0.5, 0.5)
+
+[node name="Ocean Floor" type="Node2D" parent="Zones" groups=["Zones"]]
+position = Vector2(2876, 0)
+scale = Vector2(0.5, 0.5)
 
 [node name="Kelp Forest" type="Node2D" parent="Zones" groups=["Zones"]]
-position = Vector2(1960, -624)
+position = Vector2(10500, 0)
 scale = Vector2(0.5, 0.5)
 
 [node name="Popped Town" type="Node2D" parent="Zones" groups=["Zones"]]
-position = Vector2(4230, -624)
+position = Vector2(18200, 0)
 scale = Vector2(0.5, 0.5)
 
-[node name="Rocky Outcrops" type="Node2D" parent="Zones" groups=["Zones"]]
-position = Vector2(6839, -624)
+[node name="Toxic Dump" type="Node2D" parent="Zones" groups=["Zones"]]
+position = Vector2(22210, 0)
+scale = Vector2(0.5, 0.5)
+
+[node name="Dropoff" type="Node2D" parent="Zones" groups=["Zones"]]
+position = Vector2(45200, 0)
 scale = Vector2(0.5, 0.5)
 
 [node name="Vent" type="Node2D" parent="."]
-position = Vector2(1168, 1024)
+position = Vector2(960, 1024)
 
 [node name="OxygenDispenser" parent="Vent" instance=ExtResource("6_eijx3")]
 
@@ -149,23 +194,83 @@ offset_bottom = 7.0
 text = "VENT"
 
 [node name="PipeLayer" type="Node2D" parent="."]
+script = ExtResource("9_7we8j")
 
 [node name="Beacon1" type="Node2D" parent="PipeLayer"]
+position = Vector2(8688, 1024)
 script = ExtResource("9_yavqo")
 
 [node name="BeaconArea" parent="PipeLayer/Beacon1" instance=ExtResource("3_rtwnx")]
-position = Vector2(6976, 1024)
 
 [node name="Pipes" type="Node2D" parent="PipeLayer/Beacon1"]
-position = Vector2(1216, 1024)
+position = Vector2(-5760, 0)
 
-[node name="Pipe" parent="PipeLayer/Beacon1/Pipes" instance=ExtResource("7_3dd0i")]
+[node name="Pipe5" parent="PipeLayer/Beacon1/Pipes" instance=ExtResource("7_3dd0i")]
+position = Vector2(-1920, 0)
 
-[node name="Pipe2" parent="PipeLayer/Beacon1/Pipes" instance=ExtResource("7_3dd0i")]
+[node name="Pipe7" parent="PipeLayer/Beacon1/Pipes" instance=ExtResource("7_3dd0i")]
+
+[node name="Pipe 8" parent="PipeLayer/Beacon1/Pipes" instance=ExtResource("7_3dd0i")]
 position = Vector2(1920, 0)
 
-[node name="Pipe3" parent="PipeLayer/Beacon1/Pipes" instance=ExtResource("7_3dd0i")]
+[node name="p" parent="PipeLayer/Beacon1/Pipes" instance=ExtResource("7_3dd0i")]
 position = Vector2(3840, 0)
+
+[node name="Beacon2" type="Node2D" parent="PipeLayer"]
+position = Vector2(20375, 1024)
+script = ExtResource("9_yavqo")
+
+[node name="BeaconArea" parent="PipeLayer/Beacon2" instance=ExtResource("3_rtwnx")]
+
+[node name="Pipes" type="Node2D" parent="PipeLayer/Beacon2"]
+position = Vector2(-5927, 0)
+
+[node name="Pipe6" parent="PipeLayer/Beacon2/Pipes" instance=ExtResource("7_3dd0i")]
+position = Vector2(-5760, 0)
+
+[node name="Pipe8" parent="PipeLayer/Beacon2/Pipes" instance=ExtResource("7_3dd0i")]
+position = Vector2(-3840, 0)
+
+[node name="Pipe5" parent="PipeLayer/Beacon2/Pipes" instance=ExtResource("7_3dd0i")]
+position = Vector2(-1920, 0)
+
+[node name="Pipe7" parent="PipeLayer/Beacon2/Pipes" instance=ExtResource("7_3dd0i")]
+
+[node name="Pipe 8" parent="PipeLayer/Beacon2/Pipes" instance=ExtResource("7_3dd0i")]
+position = Vector2(1920, 0)
+
+[node name="p" parent="PipeLayer/Beacon2/Pipes" instance=ExtResource("7_3dd0i")]
+position = Vector2(3840, 0)
+
+[node name="Beacon3" type="Node2D" parent="PipeLayer"]
+position = Vector2(37500, 1024)
+script = ExtResource("9_yavqo")
+
+[node name="BeaconArea" parent="PipeLayer/Beacon3" instance=ExtResource("3_rtwnx")]
+
+[node name="Pipes" type="Node2D" parent="PipeLayer/Beacon3"]
+position = Vector2(-5927, 0)
+
+[node name="Pipe6" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
+position = Vector2(-5760, 0)
+
+[node name="Pipe8" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
+position = Vector2(-3840, 0)
+
+[node name="Pipe5" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
+position = Vector2(-1920, 0)
+
+[node name="Pipe7" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
+
+[node name="Pipe 8" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
+position = Vector2(1920, 0)
+
+[node name="p" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
+position = Vector2(3840, 0)
+
+[node name="Node" type="Node" parent="PipeLayer"]
 
 [connection signal="on_depleted" from="HUD/OxygenTimer" to="." method="_on_death"]
 [connection signal="on_beacon_placed" from="PipeLayer/Beacon1/BeaconArea" to="PipeLayer/Beacon1" method="on_beacon_placed"]
+[connection signal="on_beacon_placed" from="PipeLayer/Beacon2/BeaconArea" to="PipeLayer/Beacon2" method="on_beacon_placed"]
+[connection signal="on_beacon_placed" from="PipeLayer/Beacon3/BeaconArea" to="PipeLayer/Beacon3" method="on_beacon_placed"]
