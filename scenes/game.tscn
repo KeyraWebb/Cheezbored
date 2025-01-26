@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7wbg4"]
 [ext_resource type="PackedScene" uid="uid://bhbve28s5tl6q" path="res://scenes/main_menu.tscn" id="2_cql07"]
-[ext_resource type="PackedScene" uid="uid://mampn2uxmi73" path="res://scenes/death_screen.tscn" id="3_fsppi"]
+[ext_resource type="PackedScene" path="res://scenes/death_screen.tscn" id="3_fsppi"]
+[ext_resource type="PackedScene" uid="uid://b471jw81q2f7r" path="res://scenes/underwater_level.tscn" id="4_8u83u"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_7wbg4")

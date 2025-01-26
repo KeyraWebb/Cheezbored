@@ -1,6 +1,27 @@
-[gd_scene load_steps=31 format=3 uid="uid://cs1exj1uj3x2t"]
+[gd_scene load_steps=37 format=3 uid="uid://cs1exj1uj3x2t"]
 
+[ext_resource type="Texture2D" uid="uid://cqgq4s3u56cdq" path="res://assets/sprites/spritesheets/Beast_FaceEncounter.png" id="1_krsfr"]
 [ext_resource type="Texture2D" uid="uid://w4x0kcxvp41e" path="res://assets/sprites/spritesheets/huge_man_looms.png" id="1_tmmac"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tuba"]
+atlas = ExtResource("1_krsfr")
+region = Rect2(0, 0, 902, 902)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kmq3"]
+atlas = ExtResource("1_krsfr")
+region = Rect2(902, 0, 902, 902)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnyjt"]
+atlas = ExtResource("1_krsfr")
+region = Rect2(1804, 0, 902, 902)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1o8p"]
+atlas = ExtResource("1_krsfr")
+region = Rect2(0, 902, 902, 902)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8k4i3"]
+atlas = ExtResource("1_krsfr")
+region = Rect2(902, 902, 902, 902)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8svm3"]
 atlas = ExtResource("1_tmmac")
@@ -118,6 +139,26 @@ region = Rect2(5766, 6492, 1922, 1082)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_7tuba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kmq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnyjt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1o8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8k4i3")
+}],
+"loop": false,
+"name": &"look",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8svm3")
 }, {
 "duration": 1.0,
@@ -201,7 +242,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_adkrs")
 }],
-"loop": true,
+"loop": false,
 "name": &"looming",
 "speed": 5.0
 }]
