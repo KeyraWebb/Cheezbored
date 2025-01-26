@@ -5,21 +5,21 @@
 
 ## Credits
 **Programming**
-Josh
-Keyra
+- Josh
+- Keyra
 
 **Animation**
-Alex
-Jay
+- Alex
+- Jay
 
 **Art & Assets**
-Alex
-Jay
-Jonty
+- Alex
+- Jay
+- Jonty
 
 **Music**
-Jonty
+- Jonty
 
 ### Special thanks to:
 
-Southern Institute of Technology NZ
+- Southern Institute of Technology NZ
