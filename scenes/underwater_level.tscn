@@ -1,22 +1,21 @@
-[gd_scene load_steps=23 format=3 uid="uid://b471jw81q2f7r"]
+[gd_scene load_steps=22 format=3 uid="uid://b471jw81q2f7r"]
 
 [ext_resource type="PackedScene" uid="uid://df6n5fnrrtxh8" path="res://scenes/objects/player.tscn" id="1_dsi1s"]
+[ext_resource type="PackedScene" uid="uid://cvux58ossusty" path="res://scenes/ui/oxygen_timer.tscn" id="1_r1edr"]
 [ext_resource type="Script" path="res://scripts/underwater_level.gd" id="1_xjn78"]
 [ext_resource type="Script" path="res://scripts/zones.gd" id="2_ab1qq"]
-[ext_resource type="Script" path="res://scripts/oxygen_timer.gd" id="2_pas6x"]
-[ext_resource type="Script" path="res://scripts/health_meter.gd" id="3_47vo4"]
 [ext_resource type="Texture2D" uid="uid://b4wivdan60b3l" path="res://assets/sprites/backgrounds/OceanFloorRear.png" id="3_r6orm"]
-[ext_resource type="PackedScene" uid="uid://c12ggw0ndr0e7" path="res://scenes/objects/beacon_area.tscn" id="3_rtwnx"]
+[ext_resource type="PackedScene" uid="uid://biuxyiktdjo2d" path="res://scenes/objects/beacon_area.tscn" id="3_rtwnx"]
 [ext_resource type="Texture2D" uid="uid://bfws0r5mvw126" path="res://assets/sprites/backgrounds/OceanFloorFront.png" id="4_8eb2o"]
-[ext_resource type="Theme" uid="uid://xmw5s6ytlo3k" path="res://assets/fonts/basetext.tres" id="4_m5qyd"]
-[ext_resource type="PackedScene" uid="uid://beiqc86478ixd" path="res://scenes/objects/jelly_hazard.tscn" id="4_yymqc"]
+[ext_resource type="Texture2D" uid="uid://c0pe3262dj0h8" path="res://assets/sprites/backgrounds/WholeAssRear1.png" id="5_ci75f"]
 [ext_resource type="Texture2D" uid="uid://c5u8aug8o1qd0" path="res://assets/sprites/Setting Image temp.png" id="5_gbqkf"]
-[ext_resource type="PackedScene" path="res://scenes/objects/oxygen_dispenser.tscn" id="6_eijx3"]
-[ext_resource type="PackedScene" path="res://scenes/objects/pipe.tscn" id="7_3dd0i"]
+[ext_resource type="PackedScene" uid="uid://015qpi431l65" path="res://scenes/objects/oxygen_dispenser.tscn" id="6_eijx3"]
+[ext_resource type="PackedScene" uid="uid://dfwd1jovxn5q3" path="res://scenes/objects/pipe.tscn" id="7_3dd0i"]
+[ext_resource type="Texture2D" uid="uid://peodg6eigb80" path="res://assets/sprites/backgrounds/WholeAssFront1.png" id="8_1uygw"]
+[ext_resource type="Texture2D" uid="uid://b83pfjb8ybekb" path="res://assets/sprites/backgrounds/WholeAssRear2.png" id="8_mhw2f"]
 [ext_resource type="Script" path="res://scripts/beacon_manager.gd" id="9_7we8j"]
 [ext_resource type="Script" path="res://scripts/beacon.gd" id="9_yavqo"]
-[ext_resource type="Script" path="res://scripts/event_triggers.gd" id="13_xmfje"]
-[ext_resource type="Script" path="res://scripts/scripted_event.gd" id="14_y6qs1"]
+[ext_resource type="Texture2D" uid="uid://dnhsxxbk0y52t" path="res://assets/sprites/backgrounds/WholeAssFront2.png" id="10_yy0y4"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_c0pn0"]
 
@@ -36,76 +35,15 @@ script = ExtResource("1_xjn78")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="OxygenTimer" type="Control" parent="HUD" node_paths=PackedStringArray("oxygen_display")]
+[node name="OxygenTimer" parent="HUD" instance=ExtResource("1_r1edr")]
 unique_name_in_owner = true
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("2_pas6x")
 deplete_delay = 52
-oxygen_display = NodePath("OxygenDisplay")
-low_oxygen_color = Color(1, 0.29, 0.29, 1)
 metadata/_edit_use_anchors_ = true
-
-[node name="OxygenDisplay" type="Label" parent="HUD/OxygenTimer"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -280.0
-offset_top = 65.0
-offset_right = -18.0
-offset_bottom = 120.0
-grow_horizontal = 0
-theme = ExtResource("4_m5qyd")
-theme_override_font_sizes/font_size = 30
-text = "Oxygen: 100%"
-horizontal_alignment = 2
-
-[node name="HealthMeter" type="Control" parent="HUD" node_paths=PackedStringArray("display")]
-unique_name_in_owner = true
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("3_47vo4")
-display = NodePath("Display")
-metadata/_edit_use_anchors_ = true
-
-[node name="Display" type="Label" parent="HUD/HealthMeter"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -280.0
-offset_top = 20.0
-offset_right = -18.0
-offset_bottom = 75.0
-grow_horizontal = 0
-theme = ExtResource("4_m5qyd")
-theme_override_font_sizes/font_size = 30
-text = "Health: 100%"
-horizontal_alignment = 2
 
 [node name="Player" parent="." instance=ExtResource("1_dsi1s")]
 position = Vector2(960, 1024)
 walk_speed = 900.0
 swim_speed = 2500.0
-
-[node name="Creatures" type="Node2D" parent="."]
-position = Vector2(1399, 535)
-
-[node name="Jellies" type="Node2D" parent="Creatures"]
-
-[node name="JellyHazard" parent="Creatures/Jellies" instance=ExtResource("4_yymqc")]
-position = Vector2(0, 0)
-movedelaymax = 0
-movedelaymin = 0
 
 [node name="Borders" type="Node2D" parent="."]
 
@@ -159,19 +97,20 @@ text = "TEXT"
 [node name="Background" type="ParallaxLayer" parent="Zones/ParallaxBackground"]
 motion_scale = Vector2(0.5, 0.5)
 
-[node name="City" type="Sprite2D" parent="Zones/ParallaxBackground/Background"]
+[node name="background left" type="Sprite2D" parent="Zones/ParallaxBackground/Background"]
 position = Vector2(9.53674e-07, 2.18279e-11)
-scale = Vector2(0.554764, 0.448645)
-texture = ExtResource("5_gbqkf")
+texture = ExtResource("5_ci75f")
 centered = false
 
 [node name="OceanFloor" type="Sprite2D" parent="Zones/ParallaxBackground/Background"]
+visible = false
 z_index = -20
 position = Vector2(1928, -540)
 texture = ExtResource("3_r6orm")
 centered = false
 
 [node name="KelpForest" type="Sprite2D" parent="Zones/ParallaxBackground/Background"]
+visible = false
 modulate = Color(0.278357, 1, 0.512521, 1)
 z_index = -20
 position = Vector2(5768, -552)
@@ -179,6 +118,7 @@ texture = ExtResource("3_r6orm")
 centered = false
 
 [node name="PoppedCity" type="Sprite2D" parent="Zones/ParallaxBackground/Background"]
+visible = false
 modulate = Color(0.839373, 0.311916, 0.471622, 1)
 position = Vector2(9608, 2.18279e-11)
 scale = Vector2(0.554764, 0.448645)
@@ -186,6 +126,7 @@ texture = ExtResource("5_gbqkf")
 centered = false
 
 [node name="ToxicDump" type="Sprite2D" parent="Zones/ParallaxBackground/Background"]
+visible = false
 modulate = Color(0.717141, 0.389214, 0.0271939, 1)
 z_index = -20
 position = Vector2(11552, -540)
@@ -199,18 +140,29 @@ position = Vector2(3840, 0)
 texture = ExtResource("3_r6orm")
 centered = false
 
+[node name="background right" type="Sprite2D" parent="Zones/ParallaxBackground/Background"]
+position = Vector2(8639, 2.18279e-11)
+texture = ExtResource("8_mhw2f")
+centered = false
+
 [node name="Foreground" type="ParallaxLayer" parent="Zones/ParallaxBackground"]
 motion_scale = Vector2(0.75, 0.75)
-motion_mirroring = Vector2(5760, 0)
 
 [node name="OceanFloor" type="Sprite2D" parent="Zones/ParallaxBackground/Foreground"]
-texture = ExtResource("4_8eb2o")
+position = Vector2(2, 0)
+texture = ExtResource("8_1uygw")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Zones/ParallaxBackground/Foreground"]
+position = Vector2(12377, -1)
+texture = ExtResource("10_yy0y4")
 centered = false
 
 [node name="ParallaxForeground" type="ParallaxBackground" parent="Zones"]
 layer = 99
 
 [node name="OceanMid" type="ParallaxLayer" parent="Zones/ParallaxForeground"]
+visible = false
 motion_scale = Vector2(2, 2)
 
 [node name="foreground" type="Sprite2D" parent="Zones/ParallaxForeground/OceanMid"]
@@ -262,35 +214,31 @@ text = "VENT"
 [node name="PipeLayer" type="Node2D" parent="."]
 script = ExtResource("9_7we8j")
 
-[node name="Beacon3" type="Node2D" parent="PipeLayer"]
-position = Vector2(37500, 1024)
+[node name="Beacon1" type="Node2D" parent="PipeLayer"]
+position = Vector2(8688, 1024)
 script = ExtResource("9_yavqo")
 
-[node name="Pipes" type="Node2D" parent="PipeLayer/Beacon3"]
-position = Vector2(-5927, 0)
+[node name="BeaconArea" parent="PipeLayer/Beacon1" instance=ExtResource("3_rtwnx")]
 
-[node name="Pipe6" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
+[node name="Pipes" type="Node2D" parent="PipeLayer/Beacon1"]
 position = Vector2(-5760, 0)
 
-[node name="Pipe8" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
-position = Vector2(-3840, 0)
-
-[node name="Pipe5" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
+[node name="Pipe5" parent="PipeLayer/Beacon1/Pipes" instance=ExtResource("7_3dd0i")]
 position = Vector2(-1920, 0)
 
-[node name="Pipe7" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
+[node name="Pipe7" parent="PipeLayer/Beacon1/Pipes" instance=ExtResource("7_3dd0i")]
 
-[node name="Pipe 8" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
+[node name="Pipe 8" parent="PipeLayer/Beacon1/Pipes" instance=ExtResource("7_3dd0i")]
 position = Vector2(1920, 0)
 
-[node name="p" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
+[node name="p" parent="PipeLayer/Beacon1/Pipes" instance=ExtResource("7_3dd0i")]
 position = Vector2(3840, 0)
-
-[node name="BeaconArea" parent="PipeLayer/Beacon3" instance=ExtResource("3_rtwnx")]
 
 [node name="Beacon2" type="Node2D" parent="PipeLayer"]
 position = Vector2(20375, 1024)
 script = ExtResource("9_yavqo")
+
+[node name="BeaconArea" parent="PipeLayer/Beacon2" instance=ExtResource("3_rtwnx")]
 
 [node name="Pipes" type="Node2D" parent="PipeLayer/Beacon2"]
 position = Vector2(-5927, 0)
@@ -312,37 +260,35 @@ position = Vector2(1920, 0)
 [node name="p" parent="PipeLayer/Beacon2/Pipes" instance=ExtResource("7_3dd0i")]
 position = Vector2(3840, 0)
 
-[node name="BeaconArea" parent="PipeLayer/Beacon2" instance=ExtResource("3_rtwnx")]
-
-[node name="Beacon1" type="Node2D" parent="PipeLayer"]
-position = Vector2(8688, 1024)
+[node name="Beacon3" type="Node2D" parent="PipeLayer"]
+position = Vector2(37500, 1024)
 script = ExtResource("9_yavqo")
 
-[node name="Pipes" type="Node2D" parent="PipeLayer/Beacon1"]
+[node name="BeaconArea" parent="PipeLayer/Beacon3" instance=ExtResource("3_rtwnx")]
+
+[node name="Pipes" type="Node2D" parent="PipeLayer/Beacon3"]
+position = Vector2(-5927, 0)
+
+[node name="Pipe6" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
 position = Vector2(-5760, 0)
 
-[node name="Pipe5" parent="PipeLayer/Beacon1/Pipes" instance=ExtResource("7_3dd0i")]
+[node name="Pipe8" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
+position = Vector2(-3840, 0)
+
+[node name="Pipe5" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
 position = Vector2(-1920, 0)
 
-[node name="Pipe7" parent="PipeLayer/Beacon1/Pipes" instance=ExtResource("7_3dd0i")]
+[node name="Pipe7" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
 
-[node name="Pipe 8" parent="PipeLayer/Beacon1/Pipes" instance=ExtResource("7_3dd0i")]
+[node name="Pipe 8" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
 position = Vector2(1920, 0)
 
-[node name="p" parent="PipeLayer/Beacon1/Pipes" instance=ExtResource("7_3dd0i")]
+[node name="p" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
 position = Vector2(3840, 0)
 
-[node name="BeaconArea" parent="PipeLayer/Beacon1" instance=ExtResource("3_rtwnx")]
-position = Vector2(0, 38)
-
-[node name="EventTriggers" type="Node2D" parent="."]
-script = ExtResource("13_xmfje")
-
-[node name="ScriptedEvent" type="Node2D" parent="EventTriggers"]
-script = ExtResource("14_y6qs1")
+[node name="Node" type="Node" parent="PipeLayer"]
 
 [connection signal="on_depleted" from="HUD/OxygenTimer" to="." method="_on_death"]
-[connection signal="on_depleted" from="HUD/HealthMeter" to="." method="_on_death"]
-[connection signal="on_beacon_placed" from="PipeLayer/Beacon3/BeaconArea" to="PipeLayer/Beacon3" method="on_beacon_placed"]
-[connection signal="on_beacon_placed" from="PipeLayer/Beacon2/BeaconArea" to="PipeLayer/Beacon2" method="on_beacon_placed"]
 [connection signal="on_beacon_placed" from="PipeLayer/Beacon1/BeaconArea" to="PipeLayer/Beacon1" method="on_beacon_placed"]
+[connection signal="on_beacon_placed" from="PipeLayer/Beacon2/BeaconArea" to="PipeLayer/Beacon2" method="on_beacon_placed"]
+[connection signal="on_beacon_placed" from="PipeLayer/Beacon3/BeaconArea" to="PipeLayer/Beacon3" method="on_beacon_placed"]
