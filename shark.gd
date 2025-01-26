@@ -7,6 +7,12 @@ var visibletarget
 @export var player: CharacterBody2D
 var currentdelay = 0
 var rng = RandomNumberGenerator.new()
+var movetimer: int
+var movedirection: Vector2
+
+@export var movelengthmax: int
+@export var movelengthmin: int
+
 @export var sprite: AnimatedSprite2D
 
 var currentdirection = 1
@@ -28,24 +34,28 @@ func _process(delta: float) -> void:
 		pass
 	elif currentdelay <= 0:
 		currentdelay = rng.randi_range(movedelaymin, movedelaymax)
-		pass
+		movetimer = rng.randi_range(movelengthmax, movelengthmin)
+		movedirection = Vector2(rng.randf_range(-1,1),rng.randf_range(-1,1))
+	elif movetimer > 0:
+		movetimer -= 1
 	else:
 		currentdelay -= 1
-	
+
 	#getting direction of the shark
 	if velocity.x > 0:
 		sprite.scale.x = scalebase * -1
 	elif velocity.x < 0: 
 		sprite.scale.x = scalebase
 		
-	
-		
-	
-	
 func _physics_process(delta: float) -> void:
 	if visibletarget:
 		chase_player(delta)
-		
+	elif movetimer > 0:
+		move_idly() 
+
+func move_idly() -> void:
+	velocity = movedirection * movespeed
+	move_and_slide()
 		
 func chase_player(delta) -> void:
 	var player_position = player.global_position

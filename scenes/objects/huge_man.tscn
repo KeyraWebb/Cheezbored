@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://1e7sff04fw62"]
+[gd_scene load_steps=37 format=3 uid="uid://cs1exj1uj3x2t"]
 
 [ext_resource type="Texture2D" uid="uid://cqgq4s3u56cdq" path="res://assets/sprites/spritesheets/Beast_FaceEncounter.png" id="1_krsfr"]
 [ext_resource type="Texture2D" uid="uid://w4x0kcxvp41e" path="res://assets/sprites/spritesheets/huge_man_looms.png" id="1_tmmac"]
