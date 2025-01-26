@@ -19,13 +19,13 @@ func _ready() -> void:
 
 func _on_death() -> void:
 	game.die()
-
-
+	
+	
 func restart() -> void:
 	oxygen_timer.oxygen = 100
 	player.position = spawnpoint
 	event_triggers.reset
-
+	
 
 func _on_beacon_set_respawn(respawn_position: Vector2) -> void:
 	spawnpoint = respawn_position

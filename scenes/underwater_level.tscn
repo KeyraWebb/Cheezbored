@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b471jw81q2f7r"]
+[gd_scene load_steps=32 format=3 uid="uid://b471jw81q2f7r"]
 
 [ext_resource type="PackedScene" uid="uid://df6n5fnrrtxh8" path="res://scenes/objects/player.tscn" id="1_dsi1s"]
 [ext_resource type="Script" path="res://scripts/underwater_level.gd" id="1_xjn78"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://8amkkokbu6c8" path="res://scenes/objects/tuna_fish.tscn" id="21_3osc5"]
 [ext_resource type="PackedScene" uid="uid://bm3kiaoi1lwn6" path="res://scenes/objects/cwab.tscn" id="22_qa3qo"]
 [ext_resource type="AudioStream" uid="uid://qsbtood8aowg" path="res://assets/sound/ThalassolopolisGeneral.ogg" id="24_j340n"]
+[ext_resource type="PackedScene" uid="uid://buamhvhvwud4f" path="res://scenes/objects/shark_hazard.tscn" id="24_v3g2a"]
 [ext_resource type="AudioStream" uid="uid://gqudsyqkfq65" path="res://assets/sound/ThalassolopolisEnd.ogg" id="25_bhgqb"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_c0pn0"]
@@ -334,22 +335,13 @@ position = Vector2(1920, 0)
 position = Vector2(3840, 0)
 
 [node name="Beacon3" type="Node2D" parent="PipeLayer"]
-position = Vector2(37500, 1024)
+position = Vector2(26139, 1024)
 script = ExtResource("9_yavqo")
 
 [node name="BeaconArea" parent="PipeLayer/Beacon3" instance=ExtResource("3_rtwnx")]
 
 [node name="Pipes" type="Node2D" parent="PipeLayer/Beacon3"]
 position = Vector2(-5927, 0)
-
-[node name="Pipe6" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
-position = Vector2(-5760, 0)
-
-[node name="Pipe8" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
-position = Vector2(-3840, 0)
-
-[node name="Pipe5" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
-position = Vector2(-1920, 0)
 
 [node name="Pipe7" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
 
@@ -668,6 +660,24 @@ scale = Vector2(0.37, 0.37)
 [node name="JellyHazard8" parent="hazards/Jellies" instance=ExtResource("4_yymqc")]
 position = Vector2(29533, 274)
 scale = Vector2(0.37, 0.37)
+
+[node name="Sharks" type="Node2D" parent="hazards"]
+
+[node name="shark" parent="hazards/Sharks" node_paths=PackedStringArray("player") instance=ExtResource("24_v3g2a")]
+position = Vector2(12633, 471)
+player = NodePath("../../../Player")
+
+[node name="shark2" parent="hazards/Sharks" node_paths=PackedStringArray("player") instance=ExtResource("24_v3g2a")]
+position = Vector2(19194, 407)
+player = NodePath("../../../Player")
+
+[node name="shark3" parent="hazards/Sharks" node_paths=PackedStringArray("player") instance=ExtResource("24_v3g2a")]
+position = Vector2(20941, 314)
+player = NodePath("../../../Player")
+
+[node name="shark4" parent="hazards/Sharks" node_paths=PackedStringArray("player") instance=ExtResource("24_v3g2a")]
+position = Vector2(24832, 534)
+player = NodePath("../../../Player")
 
 [node name="Bg music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("24_j340n")
