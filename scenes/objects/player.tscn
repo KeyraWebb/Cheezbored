@@ -91,6 +91,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+z_index = 20
 script = ExtResource("1_if1o6")
 sprite = NodePath("AnimatedSprite2D")
 
