@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b471jw81q2f7r"]
+[gd_scene load_steps=20 format=3 uid="uid://b471jw81q2f7r"]
 
 [ext_resource type="PackedScene" uid="uid://df6n5fnrrtxh8" path="res://scenes/objects/player.tscn" id="1_dsi1s"]
 [ext_resource type="PackedScene" uid="uid://cvux58ossusty" path="res://scenes/ui/oxygen_timer.tscn" id="1_r1edr"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" path="res://scenes/objects/pipe.tscn" id="7_3dd0i"]
 [ext_resource type="Script" path="res://scripts/beacon_manager.gd" id="9_7we8j"]
 [ext_resource type="Script" path="res://scripts/beacon.gd" id="9_yavqo"]
+[ext_resource type="Script" path="res://scripts/event_triggers.gd" id="13_xmfje"]
+[ext_resource type="Script" path="res://scripts/scripted_event.gd" id="14_y6qs1"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_c0pn0"]
 
@@ -268,7 +270,11 @@ position = Vector2(1920, 0)
 [node name="p" parent="PipeLayer/Beacon3/Pipes" instance=ExtResource("7_3dd0i")]
 position = Vector2(3840, 0)
 
-[node name="Node" type="Node" parent="PipeLayer"]
+[node name="EventTriggers" type="Node2D" parent="."]
+script = ExtResource("13_xmfje")
+
+[node name="ScriptedEvent" type="Node2D" parent="EventTriggers"]
+script = ExtResource("14_y6qs1")
 
 [connection signal="on_depleted" from="HUD/OxygenTimer" to="." method="_on_death"]
 [connection signal="on_beacon_placed" from="PipeLayer/Beacon1/BeaconArea" to="PipeLayer/Beacon1" method="on_beacon_placed"]
