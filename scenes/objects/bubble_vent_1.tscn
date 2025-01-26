@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://lym6nivp82t5"]
+
+[ext_resource type="Texture2D" uid="uid://bm7y8osse2d7k" path="res://assets/sprites/spritesheets/BubbleVent.png" id="1_sr2hm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u80nm"]
+atlas = ExtResource("1_sr2hm")
+region = Rect2(0, 0, 514, 802)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfukn"]
+atlas = ExtResource("1_sr2hm")
+region = Rect2(514, 0, 514, 802)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucyi4"]
+atlas = ExtResource("1_sr2hm")
+region = Rect2(1028, 0, 514, 802)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfdrg"]
+atlas = ExtResource("1_sr2hm")
+region = Rect2(0, 802, 514, 802)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbemb"]
+atlas = ExtResource("1_sr2hm")
+region = Rect2(514, 802, 514, 802)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3j3pc"]
+atlas = ExtResource("1_sr2hm")
+region = Rect2(1028, 802, 514, 802)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5q2s1"]
+atlas = ExtResource("1_sr2hm")
+region = Rect2(1542, 0, 514, 802)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c5ohb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u80nm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfukn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucyi4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfdrg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbemb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3j3pc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5q2s1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BubbleVent 1" type="AnimatedSprite2D"]
+position = Vector2(1618, 691)
+sprite_frames = SubResource("SpriteFrames_c5ohb")
+autoplay = "default"
+frame_progress = 0.816822
