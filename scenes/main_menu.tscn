@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhbve28s5tl6q"]
+[gd_scene load_steps=6 format=3 uid="uid://bhbve28s5tl6q"]
 
 [ext_resource type="Theme" uid="uid://xmw5s6ytlo3k" path="res://assets/fonts/basetext.tres" id="1_2mm8i"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_8e512"]
 [ext_resource type="Script" path="res://scripts/quitbutton.gd" id="2_2elgg"]
+[ext_resource type="Texture2D" uid="uid://cg38o126ofoir" path="res://assets/sprites/backgrounds/Thalassolopolis Intro.png" id="4_rtch0"]
+[ext_resource type="AudioStream" uid="uid://dyx3g0ycurday" path="res://assets/sound/ThalassalopolisTheme.ogg" id="5_ojamk"]
 
 [node name="main menu" type="Control"]
 layout_mode = 3
@@ -15,37 +17,61 @@ script = ExtResource("1_8e512")
 
 [node name="play button" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = 20.0
-offset_right = 150.0
-offset_bottom = 120.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 457.0
+offset_top = -230.0
+offset_right = 757.0
+offset_bottom = -130.0
+grow_vertical = 0
 theme = ExtResource("1_2mm8i")
 theme_override_font_sizes/font_size = 30
 text = "Play"
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -819.0
+offset_top = -230.0
+offset_right = -519.0
+offset_bottom = -130.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_2mm8i")
+theme_override_font_sizes/font_size = 30
+text = "Quit"
+script = ExtResource("2_2elgg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -10
+position = Vector2(960, 540)
+texture = ExtResource("4_rtch0")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = 163.0
-offset_right = 150.0
-offset_bottom = 263.0
+offset_left = -507.5
+offset_top = -280.0
+offset_right = 507.5
+offset_bottom = -98.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_2mm8i")
-theme_override_font_sizes/font_size = 30
-text = "Quit"
-script = ExtResource("2_2elgg")
+theme_override_font_sizes/font_size = 100
+text = "Thalassalopolis"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ojamk")
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="play button" to="." method="_on_play_button_pressed"]
