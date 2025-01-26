@@ -10,8 +10,10 @@ var movetimer: int
 var movedirection: Vector2
 
 @export var sprite: Node2D
+@export_range(1, 20) var damage: int
 
 @onready var timer: Timer = $Timer
+@onready var health_meter: HealthMeter = %HealthMeter
 
 var currentdirection := 1:
 	set(value):
@@ -27,7 +29,6 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	move_idly() 
-	
 
 
 func move_idly() -> void:
@@ -36,7 +37,7 @@ func move_idly() -> void:
 		
 		
 func start_timer() -> void:
-	timer.wait_time = rng.randf_range(1, 2)
+	timer.wait_time = rng.randf_range(10, 20)
 	timer.start()
 
 
@@ -44,3 +45,8 @@ func _on_timer_timeout() -> void:
 	print("changed direction")
 	currentdirection = -currentdirection
 	start_timer()
+
+
+func _on_killzone_body_entered(body: Node2D) -> void:
+	if body is Player:
+		health_meter.health -= damage

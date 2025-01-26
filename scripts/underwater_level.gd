@@ -6,6 +6,7 @@ signal on_death
 @onready var oxygen_timer: OxygenTimer = %OxygenTimer
 @onready var player: Player = $Player
 @onready var event_triggers: EventTriggers = $EventTriggers
+@onready var health_meter: HealthMeter = %HealthMeter
 
 var game: Game
 var spawnpoint: Vector2
